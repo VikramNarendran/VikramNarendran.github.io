@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Vikram Narendran | AI/ML Engineer & Aviation Expert</title>
+<meta name="description" content="Senior FSTD Engineer, AI/ML Researcher, and Aviation Domain Expert with 25+ years of experience. ATRS 2026 Speaker. DBA from SP Jain.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #1a1a2e;
+  background: #f8fafc;
+  line-height: 1.6;
+}
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+  z-index: 100;
+  padding: 16px 0;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-name { font-weight: 600; font-size: 18px; color: #0f172a; }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #1e40af; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.hero {
+  padding: 80px 24px 60px;
+  text-align: center;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+}
+.hero-content { max-width: 800px; margin: 0 auto; }
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+.hero .title {
+  font-size: 20px;
+  color: #1e40af;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.hero .subtitle {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.7;
+  margin: 24px auto;
+  max-width: 700px;
+}
+.badge-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.badge {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1e40af;
+  border: 1px solid #c7d2fe;
+  font-weight: 500;
+}
+.section { padding: 60px 24px; }
+.section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 36px;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+.featured-research {
+  background: white;
+  border-left: 4px solid #1e40af;
+  padding: 28px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.featured-research .tag {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.featured-research h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+.featured-research p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #475569;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+.project-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-color: #c7d2fe;
+}
+.project-card .icon {
+  width: 48px;
+  height: 48px;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.project-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+.project-card .status {
+  font-size: 13px;
+  color: #1e40af;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.project-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 16px;
+}
+.tech-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tech-tags span {
+  font-size: 12px;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: #334155;
+  font-weight: 500;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+.stat {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+.stat .number {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1e40af;
+  letter-spacing: -0.02em;
+}
+.stat .label {
+  font-size: 14px;
+  color: #475569;
+  margin-top: 8px;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.skill-box {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+.skill-box h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #0f172a;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #eff6ff;
+}
+.skill-box ul { list-style: none; }
+.skill-box li {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+.skill-box li:before {
+  content: "→";
+  color: #1e40af;
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+}
+.publication-list { list-style: none; }
+.publication-list li {
+  background: white;
+  margin-bottom: 16px;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+.publication-list h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+.publication-list .pub-meta {
+  font-size: 14px;
+  color: #1e40af;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.publication-list p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+}
+.education-grid {
+  display: grid;
+  gap: 16px;
+}
+.education-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.education-item .deg-icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.education-item h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+.education-item .school {
+  font-size: 14px;
+  color: #475569;
+}
+.contact-section {
+  background: linear-gradient(135deg, #1e40af 0%, #312e81 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 24px;
+}
+.contact-section h2 {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+.contact-section p {
+  font-size: 18px;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+.social-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.social-links a:hover {
+  background: white;
+  color: #1e40af;
+}
+footer {
+  text-align: center;
+  padding: 32px 24px;
+  color: #94a3b8;
+  font-size: 14px;
+  background: #0f172a;
+  color: #cbd5e1;
+}
+footer p { margin: 4px 0; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  .hero .title { font-size: 16px; }
+  .section h2 { font-size: 24px; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Dr. Vikram Narendran</div>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Dr. Vikram Narendran</h1>
+    <div class="title">Senior FSTD Engineer | AI/ML Researcher | Aviation Domain Expert</div>
+    <p class="subtitle">25+ years leading full-flight simulator operations, maintenance, and AI-driven reliability across global aviation centers. Published researcher presenting at ATRS 2026. Expertise in voice-commanded AI decision support systems, predictive maintenance, and inventory optimization.</p>
+    <div class="badge-group">
+      <span class="badge">DBA (SP Jain)</span>
+      <span class="badge">M.Tech Software Engineering</span>
+      <span class="badge">ATRS 2026 Speaker</span>
+      <span class="badge">CAE Senior Engineer</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="container">
+    <h2>Featured Research</h2>
+    <div class="featured-research">
+      <span class="tag">ATRS World Conference 2026 (Beijing)</span>
+      <h3>Beyond the QRH: A Voice-Commanded AI Decision Support System for Pilots During Critical Emergencies</h3>
+      <p>Presenting a Multi-document Agentic Decision Support System (MADSS) with PLS-SEM validation across 300 aviation professionals. Demonstrates how domain-specific Small Language Models outperform generic LLMs in regulatory compliance and safety-critical decision making. The system retrieves QRH/FCOM/MEL procedures with AI-generated advisories, helping pilots connect related procedures and avoid common stress-induced traps.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects" style="background: white;">
+  <div class="container">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="icon">✈️</div>
+        <h3>MADSS: Agentic Aviation Decision Support</h3>
+        <div class="status">Research • Python/RAG/Agentic AI</div>
+        <p>Voice-commanded AI system for pilots during emergencies. Retrieves QRH/FCOM/MEL procedures with AI-generated advisories. Validated with 300 aviation professionals.</p>
+        <div class="tech-tags">
+          <span>Python</span>
+          <span>RAG</span>
+          <span>LLM Agents</span>
+          <span>Voice UI</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">🔧</div>
+        <h3>Predictive Maintenance Engine</h3>
+        <div class="status">Production • Machine Learning</div>
+        <p>Random Forest model reducing simulator downtime by 35% through predictive failure analysis. Integrated with CAE 7000/5000 series. Saved CAD 250K+ annually.</p>
+        <div class="tech-tags">
+          <span>Python</span>
+          <span>scikit-learn</span>
+          <span>Random Forest</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">📦</div>
+        <h3>Inventory Optimization Engine</h3>
+        <div class="status">Production • ML/Optimization</div>
+        <p>SVM-based SKU classification across 3,000+ parts. Reduced inventory value by CAD 1.6M while maintaining 99.8% part availability across 20+ simulators.</p>
+        <div class="tech-tags">
+          <span>Python</span>
+          <span>SVM</span>
+          <span>Supply Chain</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">📚</div>
+        <h3>FSTD Knowledge Portal</h3>
+        <div class="status">Production • RAG Chatbot</div>
+        <p>Python/Flask/OpenAI RAG-based simulator chatbot. Reduced documentation search time by 60%. Adopted by all shift teams at Emirates CAE.</p>
+        <div class="tech-tags">
+          <span>Python</span>
+          <span>Flask</span>
+          <span>RAG</span>
+          <span>OpenAI</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">🛡️</div>
+        <h3>AI Governance Framework</h3>
+        <div class="status">Research • Under Review</div>
+        <p>TRN-based empirical model for AI governance in aviation. Comparative study of RAG vs agentic AI in emergency procedure retrieval.</p>
+        <div class="tech-tags">
+          <span>PLS-SEM</span>
+          <span>Governance</span>
+          <span>Empirical</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">⚙️</div>
+        <h3>Software Debugging & Integration</h3>
+        <div class="status">Production • C/C++/FORTRAN</div>
+        <p>Resolved 10-year legacy discrepancies across Hawker 800, Boeing 737/777, Embraer simulators. Integrated ACARS, ATIS, custom IOS pages.</p>
+        <div class="tech-tags">
+          <span>C/C++</span>
+          <span>FORTRAN</span>
+          <span>Avionics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Key Achievements</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="number">25+</div>
+        <div class="label">Years aviation engineering</div>
+      </div>
+      <div class="stat">
+        <div class="number">100%</div>
+        <div class="label">Audit pass rate</div>
+      </div>
+      <div class="stat">
+        <div class="number">≥99%</div>
+        <div class="label">Simulator availability</div>
+      </div>
+      <div class="stat">
+        <div class="number">35%</div>
+        <div class="label">Downtime reduction (ML)</div>
+      </div>
+      <div class="stat">
+        <div class="number">$1.6M</div>
+        <div class="label">CAD Inventory savings</div>
+      </div>
+      <div class="stat">
+        <div class="number">300+</div>
+        <div class="label">Research respondents</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="publications" style="background: white;">
+  <div class="container">
+    <h2>Publications & Research</h2>
+    <ul class="publication-list">
+      <li>
+        <h4>Beyond the QRH: Voice-Commanded AI Decision Support During Critical Emergencies</h4>
+        <div class="pub-meta">ATRS World Conference 2026 (Beijing) — Accepted</div>
+        <p>Multi-document agentic decision support system (MADSS) with PLS-SEM validation across 300 aviation professionals.</p>
+      </li>
+      <li>
+        <h4>Adoption of Artificial Intelligence Techniques for Inventory Management: A Case Study in the Aviation Sector</h4>
+        <div class="pub-meta">American Journal of Industrial and Business Management, Vol.14 No.5, May 2024</div>
+        <p>Published research on ML-driven inventory optimization in aviation maintenance operations. DOI: 10.4236/ajibm.2024.145040</p>
+      </li>
+      <li>
+        <h4>A TRN Framework-Based Empirical Model for AI Governance Effectiveness in Aviation</h4>
+        <div class="pub-meta">Journal of Aviation/Aerospace Education & Research — Under Review</div>
+        <p>Comparative study of RAG advisory AI vs agentic AI in emergency procedure retrieval. Evidence from PLS-SEM and prototype experiments.</p>
+      </li>
+      <li>
+        <h4>Adoption of AI Techniques for Inventory Management</h4>
+        <div class="pub-meta">Doctoral Thesis — SP Jain School of Global Management</div>
+        <p>Comprehensive research on AI applications in aviation supply chain. Indexed in ProQuest. Presented at AI Summit Abu Dhabi 2025.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h3>AI/ML & Data Science</h3>
+        <ul>
+          <li>LLM & Agentic AI (RAG, multi-agent systems)</li>
+          <li>Predictive Maintenance Models</li>
+          <li>Classification & Optimization (SVM, Random Forest)</li>
+          <li>PLS-SEM Statistical Analysis</li>
+          <li>Feature Engineering & Data Analysis</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h3>Programming & Frameworks</h3>
+        <ul>
+          <li>Python (scikit-learn, pandas, numpy)</li>
+          <li>C/C++/FORTRAN (debugging, system optimization)</li>
+          <li>Flask & web frameworks</li>
+          <li>Linux & bash scripting</li>
+          <li>TypeScript/Angular</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h3>FSTD & Aviation Domain</h3>
+        <ul>
+          <li>Full Flight Simulator Operations & Maintenance</li>
+          <li>Regulatory Compliance (EASA, FAA, GCAA, GACA, DGCA)</li>
+          <li>QRH, FCOM, MEL, Service Bulletins</li>
+          <li>Avionics Integration & Troubleshooting</li>
+          <li>Device Configuration & Fidelity Control</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h3>Aircraft Types</h3>
+        <ul>
+          <li>Airbus A320/A330/A340</li>
+          <li>Boeing 737/777</li>
+          <li>Hawker 800A/800XP/800XPi</li>
+          <li>Embraer & Gulfstream</li>
+          <li>Bell-412 Helicopter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: white;">
+  <div class="container">
+    <h2>Education</h2>
+    <div class="education-grid">
+      <div class="education-item">
+        <div class="deg-icon">🎓</div>
+        <div>
+          <h4>Doctor of Business Administration (DBA)</h4>
+          <div class="school">SP Jain School of Global Management, Sydney, Australia</div>
+        </div>
+      </div>
+      <div class="education-item">
+        <div class="deg-icon">💻</div>
+        <div>
+          <h4>Master of Technology, Software Engineering</h4>
+          <div class="school">Birla Institute of Technology and Science (BITS), India</div>
+        </div>
+      </div>
+      <div class="education-item">
+        <div class="deg-icon">📊</div>
+        <div>
+          <h4>Master of Business Administration (MBA)</h4>
+          <div class="school">SP Jain School of Global Management, Australia</div>
+        </div>
+      </div>
+      <div class="education-item">
+        <div class="deg-icon">🧠</div>
+        <div>
+          <h4>Post Graduate Diploma in Data Science</h4>
+          <div class="school">Purdue University & Simplilearn, USA</div>
+        </div>
+      </div>
+      <div class="education-item">
+        <div class="deg-icon">⚡</div>
+        <div>
+          <h4>Bachelor of Engineering, Electronics & Communication</h4>
+          <div class="school">Madras University, India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2>Let's Connect</h2>
+    <p>Open to research collaborations, speaking opportunities, and AI/aviation consulting</p>
+    <div class="social-links">
+      <a href="https://github.com/VikramNarendran/" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/vikramnarendran/" target="_blank">LinkedIn</a>
+      <a href="mailto:vikram_narendran17@outlook.com">Email</a>
+      <a href="tel:+14692641478">+1-469-264-1478</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Dr. Vikram Narendran. All rights reserved.</p>
+  <p>Senior FSTD Engineer | AI/ML Researcher | Euless, TX</p>
+</footer>
+
+</body>
+</html>
