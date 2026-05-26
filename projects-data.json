@@ -1,0 +1,171 @@
+[
+  {
+    "id": 1,
+    "title": "MADSS: Multi-Document Agentic Decision Support System",
+    "shortTitle": "MADSS - Aviation SLM",
+    "category": "Aviation AI",
+    "status": "Research - ATRS 2026",
+    "icon": "✈️",
+    "impact": "Voice-commanded AI for emergency procedures",
+    "description": "A multi-document agentic decision support system that helps pilots during emergencies by intelligently retrieving QRH/FCOM/MEL procedures with AI-generated advisories. Validated with 300+ aviation professionals.",
+    "longDescription": "MADSS represents a breakthrough in aviation safety technology. Instead of sequential procedure following (traditional QRH), MADSS uses agentic AI to understand relationships between procedures, highlight critical warnings pilots often miss under stress, and provide connected guidance. The system was validated using PLS-SEM analysis with 300 aviation professionals across multiple airlines and aircraft types.",
+    "technologies": ["Python", "RAG Architecture", "LLM Agents", "Voice UI", "Multi-Document Retrieval"],
+    "metrics": [
+      { "label": "Decision Accuracy Improvement", "value": "23%" },
+      { "label": "Procedure Completeness", "value": "+34%" },
+      { "label": "Cognitive Load Reduction", "value": "18%" },
+      { "label": "Participants Validated", "value": "300+" }
+    ],
+    "papers": [
+      {
+        "title": "Beyond the QRH: A Voice-Commanded AI Decision Support System for Pilots During Critical Emergencies",
+        "conference": "ATRS World Conference 2026",
+        "location": "Beijing",
+        "status": "Accepted",
+        "link": ""
+      }
+    ],
+    "skills": ["Python", "LLM Agents", "RAG", "Aviation Domain Knowledge", "Voice UI Design"],
+    "relatedProjects": [2, 5],
+    "researchType": "Applied Research",
+    "timeline": "2024-2026"
+  },
+  {
+    "id": 2,
+    "title": "Predictive Maintenance Engine for FSTD Operations",
+    "shortTitle": "Predictive Maintenance",
+    "category": "Machine Learning",
+    "status": "Production - CAE USA",
+    "icon": "🔧",
+    "impact": "35% downtime reduction, CAD 250K+ saved annually",
+    "description": "Random Forest machine learning model that predicts full flight simulator component failures 30 days in advance. Deployed across CAE 7000/5000 series simulators.",
+    "longDescription": "This production system analyzes 10+ years of simulator maintenance data to predict failures before they occur. Using feature engineering based on operational metrics, failure patterns, and seasonal utilization, the model achieves 72% accuracy in 30-day failure prediction. Implementation required organizational change management and training, but resulted in 35% reduction in unplanned downtime.",
+    "technologies": ["Python", "scikit-learn", "Random Forest", "Feature Engineering", "Time Series Analysis"],
+    "metrics": [
+      { "label": "Prediction Accuracy", "value": "72%" },
+      { "label": "Downtime Reduction", "value": "35%" },
+      { "label": "Annual Savings", "value": "CAD 250K+" },
+      { "label": "Emergency Service Calls Reduction", "value": "45%" }
+    ],
+    "papers": [
+      {
+        "title": "Predictive Maintenance in Flight Simulator Operations",
+        "journal": "Internal CAE Research",
+        "year": 2023,
+        "link": ""
+      }
+    ],
+    "skills": ["Machine Learning", "Python", "Feature Engineering", "Operational Analytics", "Predictive Modeling"],
+    "relatedProjects": [3, 4],
+    "researchType": "Applied Research",
+    "timeline": "2020-2024"
+  },
+  {
+    "id": 3,
+    "title": "Inventory Optimization Using SVM Classification",
+    "shortTitle": "SVM Inventory Optimization",
+    "category": "Supply Chain & ML",
+    "status": "Production - Emirates CAE",
+    "icon": "📦",
+    "impact": "CAD 1.6M inventory reduction, 99.8% part availability maintained",
+    "description": "Support Vector Machine model classifying 3,000+ SKUs across 20+ simulators into intelligent tiers for strategic inventory management. Published in American Journal of Industrial and Business Management.",
+    "longDescription": "This research took inventory management from binary classification (critical/non-critical) to a sophisticated 4-tier system based on usage frequency, lead time, cost, criticality, and obsolescence risk. The SVM model reduced inventory value by 43% while maintaining 99.8% part availability. The case study was published in a peer-reviewed journal and demonstrates ML's real impact on supply chain operations.",
+    "technologies": ["Python", "SVM", "Feature Engineering", "Supply Chain Optimization", "Inventory Management"],
+    "metrics": [
+      { "label": "Inventory Value Reduction", "value": "43%" },
+      { "label": "Cash Freed Up", "value": "CAD 1.6M" },
+      { "label": "Part Availability", "value": "99.8%" },
+      { "label": "Obsolescence Reduction", "value": "55%" }
+    ],
+    "papers": [
+      {
+        "title": "Adoption of Artificial Intelligence Techniques for Inventory Management: A Case Study in the Aviation Sector",
+        "journal": "American Journal of Industrial and Business Management",
+        "volume": "Vol. 14, No. 5",
+        "date": "May 2024",
+        "doi": "10.4236/ajibm.2024.145040",
+        "link": "https://doi.org/10.4236/ajibm.2024.145040"
+      }
+    ],
+    "skills": ["SVM Classification", "Supply Chain Analytics", "Python", "Business Optimization", "Data Science"],
+    "relatedProjects": [2, 4],
+    "researchType": "Published Research",
+    "timeline": "2018-2024"
+  },
+  {
+    "id": 4,
+    "title": "FSTD Knowledge Portal - RAG Chatbot",
+    "shortTitle": "Knowledge Portal",
+    "category": "AI & Knowledge Management",
+    "status": "Production - Emirates CAE",
+    "icon": "📚",
+    "impact": "60% documentation search time reduction, adopted by all shift teams",
+    "description": "Python/Flask/OpenAI RAG-based chatbot that indexes QRH/FCOM/MEL documents for instant procedure retrieval. Real-time simulator knowledge at operators' fingertips.",
+    "longDescription": "Built to solve a critical operational problem: maintenance teams spending too much time searching through massive documentation sets. This RAG system ingests all relevant documents, allows natural language queries, and returns precisely relevant information in seconds. Adopted across all shifts at Emirates CAE, reducing documentation search time by 60%.",
+    "technologies": ["Python", "Flask", "RAG", "OpenAI API", "Document Indexing"],
+    "metrics": [
+      { "label": "Search Time Reduction", "value": "60%" },
+      { "label": "User Adoption", "value": "100%" },
+      { "label": "Query Accuracy", "value": "94%" },
+      { "label": "Daily Queries", "value": "50+" }
+    ],
+    "papers": [],
+    "skills": ["RAG Systems", "Python", "Flask", "OpenAI Integration", "UX Design"],
+    "relatedProjects": [1, 2],
+    "researchType": "Production System",
+    "timeline": "2022-2024"
+  },
+  {
+    "id": 5,
+    "title": "AI Governance Framework for Aviation",
+    "shortTitle": "AI Governance Framework",
+    "category": "AI Governance & Research",
+    "status": "Under Review",
+    "icon": "🛡️",
+    "impact": "First empirical model for AI governance effectiveness in aviation",
+    "description": "TRN-based empirical model evaluating AI governance effectiveness. Comparative study of RAG advisory AI vs agentic AI in emergency procedure retrieval using PLS-SEM.",
+    "longDescription": "This research addresses a critical gap: how do we ensure AI systems in safety-critical aviation domains are governed effectively? The paper proposes a TRN framework and validates it through empirical research comparing RAG-based advisory systems with agentic systems. Results show agentic AI provides better decision support while maintaining safety constraints.",
+    "technologies": ["PLS-SEM", "Governance Frameworks", "Empirical Research", "Aviation Domain Analysis"],
+    "metrics": [
+      { "label": "Governance Criteria Evaluated", "value": "12" },
+      { "label": "System Comparison Models", "value": "2" },
+      { "label": "Research Respondents", "value": "300+" },
+      { "label": "Publications Track", "value": "Peer-Reviewed" }
+    ],
+    "papers": [
+      {
+        "title": "A TRN Framework-Based Empirical Model for AI Governance Effectiveness in Aviation: Evidence from PLS-SEM and RAG Decision Support Prototype",
+        "journal": "Journal of Aviation/Aerospace Education & Research",
+        "status": "Under Review",
+        "link": ""
+      }
+    ],
+    "skills": ["PLS-SEM", "Research Methodology", "Governance", "Aviation Systems", "Empirical Analysis"],
+    "relatedProjects": [1],
+    "researchType": "Academic Research",
+    "timeline": "2025-2026"
+  },
+  {
+    "id": 6,
+    "title": "Software Debugging & Legacy System Integration",
+    "shortTitle": "Software Engineering",
+    "category": "Systems Engineering",
+    "status": "Production - Multiple Airlines",
+    "icon": "⚙️",
+    "impact": "Resolved 10-year legacy discrepancies, integrated critical avionics systems",
+    "description": "Resolved decade-long software defects across Hawker 800, Boeing 737/777, Embraer simulators. Debugged C/C++/FORTRAN logic, integrated ACARS/ATIS systems.",
+    "longDescription": "This work demonstrates deep technical expertise in simulator systems. A 10-year-old Hawker 800 discrepancy that multiple vendors declared unfixable was solved through systematic code analysis and surgical C++ rewrites. Also integrated custom avionics systems (ACARS, ATIS, IOS pages) across multiple aircraft types, ensuring regulatory compliance and seamless operation.",
+    "technologies": ["C/C++", "FORTRAN", "Avionics Integration", "Systems Debugging", "Linux"],
+    "metrics": [
+      { "label": "Legacy Issues Resolved", "value": "10+" },
+      { "label": "Aircraft Types Supported", "value": "6+" },
+        { "label": "Code Lines Debugged", "value": "100K+" },
+      { "label": "Regulatory Compliance", "value": "100%" }
+    ],
+    "papers": [],
+    "skills": ["C/C++", "FORTRAN", "Avionics Systems", "Debugging", "Systems Integration"],
+    "relatedProjects": [],
+    "researchType": "Engineering Excellence",
+    "timeline": "2000-2024"
+  }
+]
