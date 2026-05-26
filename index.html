@@ -78,6 +78,40 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 .featured-research .tag { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent); font-size: 12px; padding: 6px 14px; border-radius: 6px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; border: 1px solid rgba(167,139,250,0.3); }
 .featured-research h3 { font-size: 26px; font-weight: 700; margin-bottom: 14px; line-height: 1.3; }
 .featured-research p { font-size: 16px; line-height: 1.8; color: var(--text-2); margin-bottom: 20px; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.stat-card {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.stat-value {
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.featured-research p { font-size: 16px; line-height: 1.8; color: var(--text-2); margin-bottom: 20px; }
 .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 60px; }
 .cta-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; transition: all 0.3s; cursor: pointer; display: block; text-decoration: none; color: inherit; }
 .cta-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
@@ -93,6 +127,21 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); c
 .social-links a:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-4px); }
 .theme-toggle { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--accent); border: none; border-radius: 50%; cursor: pointer; z-index: 99; font-size: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(167,139,250,0.4); }
 .theme-toggle:hover { transform: scale(1.1); }
+.dallas-time {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  z-index: 99;
+  letter-spacing: 1px;
+}
 .scroll-top { position: fixed; bottom: 100px; right: 30px; width: 50px; height: 50px; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; cursor: pointer; z-index: 99; color: var(--text); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; }
 .scroll-top.visible { opacity: 1; visibility: visible; }
 .scroll-top:hover { background: var(--accent); color: white; }
@@ -154,6 +203,37 @@ footer { text-align: center; padding: 40px 32px; color: var(--text-3); font-size
   </div>
 </section>
 
+<section class="section" style="background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-value" id="stat1">25</div>
+        <div class="stat-label">Years of Aviation Leadership</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" id="stat2">300</div>
+        <div class="stat-label">Participants Validated MADSS</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" id="stat3">35%</div>
+        <div class="stat-label">Simulator Downtime Reduction</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" id="stat4">CAD 1.6M</div>
+        <div class="stat-label">Inventory Optimization Savings</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" id="stat5">100%</div>
+        <div class="stat-label">Audit Pass Rate</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" id="stat6">6</div>
+        <div class="stat-label">Published/Accepted Papers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
@@ -208,6 +288,7 @@ footer { text-align: center; padding: 40px 32px; color: var(--text-3); font-size
 
 <button class="scroll-top" id="scrollTop">↑</button>
 <button class="theme-toggle" id="themeToggle">🌙</button>
+<div class="dallas-time" id="dallasTime">CDT --:--:--</div>
 
 <script>
 var phrases = ['Senior FSTD Engineer', 'AI/ML Researcher', 'Aviation Domain Expert', 'ATRS 2026 Speaker', 'Published Researcher', 'Building MADSS'];
@@ -231,7 +312,43 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.reveal').forEach((el, idx) => {
     setTimeout(() => el.classList.add('visible'), idx * 100 + 300);
   });
+  animateCounters();
 });
+function animateCounters() {
+  var stats = [
+    { id: 'stat1', value: 25, suffix: '+' },
+    { id: 'stat2', value: 300, suffix: '+' },
+    { id: 'stat3', value: 35, suffix: '%' },
+    { id: 'stat4', value: 1.6, suffix: 'M', prefix: 'CAD ' },
+    { id: 'stat5', value: 100, suffix: '%' },
+    { id: 'stat6', value: 6, suffix: '' }
+  ];
+  stats.forEach(stat => {
+    var el = document.getElementById(stat.id);
+    var increment = stat.value / 50;
+    var current = 0;
+    var interval = setInterval(() => {
+      current += increment;
+      if (current >= stat.value) {
+        el.innerHTML = (stat.prefix || '') + (stat.value % 1 === 0 ? stat.value : stat.value.toFixed(1)) + stat.suffix;
+        clearInterval(interval);
+      } else {
+        el.innerHTML = (stat.prefix || '') + (current % 1 === 0 ? Math.floor(current) : current.toFixed(1)) + stat.suffix;
+      }
+    }, 30);
+  });
+}
+// Dallas Time (Central Time)
+function updateDallasTime() {
+  var now = new Date();
+  var dallasTime = now.toLocaleString('en-US', { timeZone: 'America/Chicago', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  var isDST = new Date(now.getFullYear(), 5, 1) > now || now > new Date(now.getFullYear(), 10, 1) ? false : true;
+  var tz = isDST ? 'CDT' : 'CST';
+  var el = document.getElementById('dallasTime');
+  if (el) el.innerHTML = '<span style="color:#22c55e">●</span> ' + tz + ' ' + dallasTime;
+}
+updateDallasTime();
+setInterval(updateDallasTime, 1000);
 window.addEventListener('scroll', function() {
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   document.getElementById('scrollTop').classList.toggle('visible', scrollTop > 400);
