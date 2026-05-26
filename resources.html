@@ -60,6 +60,49 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s;
+  margin-right: 16px;
+}
+.home-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateX(-4px);
+}
+.dallas-time {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  z-index: 99;
+  letter-spacing: 1px;
+}
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .nav-name {
   font-weight: 700;
   font-size: 18px;
@@ -316,6 +359,7 @@ footer {
 
 <nav class="nav">
   <div class="nav-inner">
+    <a href="index.html" class="home-btn">← Home</a>
     <a href="index.html" class="nav-name">Dr. Vikram Narendran</a>
     <div class="nav-links">
       <a href="research.html">Research</a>
@@ -324,6 +368,8 @@ footer {
     </div>
   </div>
 </nav>
+
+<div class="dallas-time" id="dallasTime">CDT --:--:--</div>
 
 <header class="header">
   <div class="container">
@@ -435,6 +481,18 @@ footer {
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">&#9790;</button>
 
 <script>
+// Dallas Time (Central Time)
+function updateDallasTime() {
+  var now = new Date();
+  var dallasTime = now.toLocaleString('en-US', { timeZone: 'America/Chicago', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  var isDST = new Date(now.getFullYear(), 5, 1) > now || now > new Date(now.getFullYear(), 10, 1) ? false : true;
+  var tz = isDST ? 'CDT' : 'CST';
+  var el = document.getElementById('dallasTime');
+  if (el) el.innerHTML = '<span style="color:#22c55e">●</span> ' + tz + ' ' + dallasTime;
+}
+updateDallasTime();
+setInterval(updateDallasTime, 1000);
+
 document.getElementById('themeToggle').addEventListener('click', function() {
   const html = document.documentElement;
   const current = html.getAttribute('data-theme');
