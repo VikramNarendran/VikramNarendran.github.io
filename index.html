@@ -15,995 +15,92 @@
   --bg-2: #11102a;
   --bg-3: #1a1640;
   --surface: rgba(255,255,255,0.04);
-  --surface-2: rgba(255,255,255,0.06);
   --border: rgba(255,255,255,0.08);
-  --border-bright: rgba(167,139,250,0.3);
   --text: #e9e6f5;
   --text-2: #a8a3c9;
   --text-3: #6b6791;
   --accent: #a78bfa;
   --accent-2: #fbbf24;
-  --accent-3: #34d399;
-  --glow: 0 0 40px rgba(167,139,250,0.2);
 }
 [data-theme="light"] {
   --bg: #faf8ff;
   --bg-2: #ffffff;
   --bg-3: #f3efff;
   --surface: rgba(0,0,0,0.02);
-  --surface-2: rgba(0,0,0,0.04);
   --border: rgba(0,0,0,0.08);
-  --border-bright: rgba(124,58,237,0.3);
   --text: #1a1240;
   --text-2: #5a4d8c;
   --text-3: #8a82b8;
   --accent: #7c3aed;
   --accent-2: #d97706;
-  --accent-3: #059669;
-  --glow: 0 0 40px rgba(124,58,237,0.15);
 }
 html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-  transition: background 0.5s, color 0.5s;
-}
-.cursor {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, border-color 0.2s;
-  mix-blend-mode: difference;
-}
-.cursor-dot {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-}
-.cursor.expand { width: 60px; height: 60px; border-color: var(--accent-2); }
-@media (max-width: 1024px) { .cursor, .cursor-dot { display: none; } }
-#particles {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-.loader {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: var(--bg);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  transition: opacity 0.8s, visibility 0.8s;
-}
-.loader.hidden { opacity: 0; visibility: hidden; }
-.plane-loader {
-  font-size: 48px;
-  animation: planeMove 2s ease-in-out infinite;
-  margin-bottom: 20px;
-}
-@keyframes planeMove {
-  0%, 100% { transform: translateX(-30px) rotate(-10deg); }
-  50% { transform: translateX(30px) rotate(10deg); }
-}
-.loader-text {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--accent);
-  font-size: 14px;
-  letter-spacing: 4px;
-}
-.progress-bar {
-  position: fixed;
-  top: 0; left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  width: 0;
-  z-index: 1000;
-  transition: width 0.1s ease-out;
-  box-shadow: 0 0 10px var(--accent);
-}
-.utc-clock {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--accent);
-  z-index: 99;
-  letter-spacing: 1px;
-}
-.theme-toggle {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: var(--accent);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 99;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(167,139,250,0.4);
-  transition: transform 0.3s;
-}
-.theme-toggle:hover { transform: scale(1.1) rotate(180deg); }
-.scroll-top {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 99;
-  font-size: 20px;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s;
-}
-.scroll-top.visible { opacity: 1; visibility: visible; }
-.scroll-top:hover { background: var(--accent); color: white; transform: translateY(-4px); }
-.nav {
-  position: sticky;
-  top: 0;
-  background: rgba(10,10,24,0.7);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  z-index: 100;
-  padding: 18px 0;
-  transition: background 0.5s;
-}
-[data-theme="light"] .nav { background: rgba(255,255,255,0.7); }
-.nav-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.nav-name {
-  font-weight: 700;
-  font-size: 18px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.02em;
-}
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+.nav { position: sticky; top: 0; background: rgba(10,10,24,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 100; padding: 18px 0; }
+.nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; }
+.nav-name { font-weight: 700; font-size: 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .nav-links { display: flex; gap: 32px; }
-.nav-links a {
-  color: var(--text-2);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s;
-}
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s;
-}
+.nav-links a { color: var(--text-2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
 .nav-links a:hover { color: var(--accent); }
-.nav-links a:hover::after { width: 100%; }
-.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
-.hero {
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 32px;
-  position: relative;
-}
-.hero-content {
-  max-width: 900px;
-  position: relative;
-  z-index: 2;
-}
-.hero-tag {
-  display: inline-block;
-  padding: 6px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border-bright);
-  border-radius: 20px;
-  font-size: 13px;
-  color: var(--accent);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 1px;
-  margin-bottom: 24px;
-  animation: fadeInUp 0.8s ease-out;
-}
-.hero-tag::before { content: '● '; color: #22c55e; animation: pulse 2s infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-.hero h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--accent-2) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeInUp 1s ease-out 0.2s both;
-}
-.hero .typewriter {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: var(--text-2);
-  margin-bottom: 24px;
-  font-family: 'JetBrains Mono', monospace;
-  min-height: 2em;
-  animation: fadeInUp 1s ease-out 0.4s both;
-}
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 32px; }
+.hero-content { max-width: 900px; }
+.avatar { width: 150px; height: 150px; margin: 0 auto 28px; position: relative; border-radius: 50%; animation: avatarFloat 4s ease-in-out infinite; }
+.avatar-ring { position: absolute; inset: -8px; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent)); animation: ringSpin 6s linear infinite; }
+.avatar-ring::after { content: ''; position: absolute; inset: 4px; background: var(--bg); border-radius: 50%; }
+.avatar-initials { position: absolute; inset: 0; margin: auto; width: 134px; height: 134px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 800; color: white; z-index: 2; box-shadow: 0 8px 30px rgba(167,139,250,0.3); }
+@keyframes avatarFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes ringSpin { to { transform: rotate(360deg); } }
+.hero-tag { display: inline-block; padding: 6px 16px; background: var(--surface); border: 1px solid rgba(167,139,250,0.3); border-radius: 20px; font-size: 13px; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; margin-bottom: 20px; background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .typewriter { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-2); margin-bottom: 24px; font-family: 'JetBrains Mono', monospace; min-height: 2em; }
 .cursor-blink { display: inline-block; width: 2px; height: 1em; background: var(--accent); margin-left: 2px; animation: blink 1s infinite; vertical-align: middle; }
 @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-.hero .subtitle {
-  font-size: 18px;
-  color: var(--text-2);
-  line-height: 1.7;
-  margin: 0 auto 36px;
-  max-width: 700px;
-  animation: fadeInUp 1s ease-out 0.6s both;
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.badge-group {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 36px;
-  animation: fadeInUp 1s ease-out 0.8s both;
-}
-.badge {
-  background: var(--surface);
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-size: 13px;
-  color: var(--text);
-  border: 1px solid var(--border);
-  font-weight: 500;
-  transition: all 0.3s;
-}
-.badge:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: var(--glow);
-}
-.hero-cta {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeInUp 1s ease-out 1s both;
-}
-.btn {
-  padding: 14px 28px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: white;
-  box-shadow: 0 4px 20px rgba(167,139,250,0.3);
-}
+.subtitle { font-size: 18px; color: var(--text-2); line-height: 1.7; margin: 0 auto 36px; max-width: 700px; }
+.badge-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+.badge { background: var(--surface); padding: 10px 18px; border-radius: 8px; font-size: 13px; color: var(--text); border: 1px solid var(--border); transition: all 0.3s; }
+.badge:hover { border-color: var(--accent); transform: translateY(-2px); }
+.hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn { padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; box-shadow: 0 4px 20px rgba(167,139,250,0.3); }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(167,139,250,0.5); }
-.btn-secondary {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
+.btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .btn-secondary:hover { border-color: var(--accent); transform: translateY(-3px); }
-.scroll-hint {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--text-3);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  animation: bounce 2s infinite;
-}
+.scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--text-3); font-family: 'JetBrains Mono', monospace; font-size: 12px; animation: bounce 2s infinite; }
 @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
-.section { padding: 100px 32px; position: relative; z-index: 1; }
+.section { padding: 100px 32px; }
 .section-header { text-align: center; margin-bottom: 60px; }
-.section-label {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--accent);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.section h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--text), var(--text-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+.section-label { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--text), var(--text-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.featured-research {
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  padding: 40px;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-}
-.featured-research::before {
-  content: '';
-  position: absolute;
-  top: -50%; right: -20%;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  opacity: 0.1;
-  pointer-events: none;
-}
-.featured-research .tag {
-  display: inline-block;
-  background: rgba(167,139,250,0.15);
-  color: var(--accent);
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  border: 1px solid var(--border-bright);
-}
-.featured-research h3 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-}
-.featured-research p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: var(--text-2);
-}
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
-}
-.project-card {
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-}
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(167,139,250,0.15), transparent 40%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-}
-.project-card:hover::before { opacity: 1; }
-.project-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.project-card .icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(251,191,36,0.2));
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  border: 1px solid var(--border);
-}
-.project-card h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-.project-card .status {
-  font-size: 12px;
-  color: var(--accent);
-  margin-bottom: 14px;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.project-card p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--text-2);
-  margin-bottom: 20px;
-}
-.tech-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.tech-tags span {
-  font-size: 12px;
-  background: rgba(167,139,250,0.1);
-  padding: 5px 12px;
-  border-radius: 6px;
-  color: var(--accent);
-  font-weight: 500;
-  border: 1px solid var(--border-bright);
-  font-family: 'JetBrains Mono', monospace;
-}
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-}
-.stat {
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  padding: 32px 24px;
-  border-radius: 16px;
-  text-align: center;
-  border: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-.stat:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: var(--glow);
-}
-.stat .number {
-  font-size: 42px;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.02em;
-  font-family: 'JetBrains Mono', monospace;
-}
-.stat .label {
-  font-size: 13px;
-  color: var(--text-2);
-  margin-top: 10px;
-  letter-spacing: 0.5px;
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-}
-.skill-box {
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  padding: 32px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  transition: all 0.3s;
-}
-.skill-box:hover { border-color: var(--accent); transform: translateY(-4px); }
-.skill-box h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.skill-box ul { list-style: none; }
-.skill-box li {
-  font-size: 15px;
-  color: var(--text-2);
-  margin-bottom: 12px;
-  padding-left: 24px;
-  position: relative;
-  transition: color 0.3s;
-}
-.skill-box li:hover { color: var(--text); }
-.skill-box li::before {
-  content: "▸";
-  color: var(--accent);
-  position: absolute;
-  left: 0;
-  font-weight: 700;
-}
-.timeline { position: relative; padding-left: 40px; }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: 0; bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent), var(--accent-2), transparent);
-}
-.timeline-item {
-  position: relative;
-  margin-bottom: 32px;
-  padding: 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: all 0.3s;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -34px;
-  top: 28px;
-  width: 14px; height: 14px;
-  background: var(--accent);
-  border-radius: 50%;
-  border: 3px solid var(--bg);
-  box-shadow: 0 0 0 2px var(--accent);
-}
-.timeline-item:hover { border-color: var(--accent); transform: translateX(8px); }
-.timeline-item h4 {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.timeline-item .pub-meta {
-  font-size: 13px;
-  color: var(--accent);
-  margin-bottom: 10px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.timeline-item p {
-  font-size: 15px;
-  color: var(--text-2);
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-.pub-links {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-}
-.pub-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  background: rgba(167,139,250,0.1);
-  color: var(--accent);
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
-  border: 1px solid var(--border-bright);
-  transition: all 0.3s;
-  letter-spacing: 0.5px;
-}
-.pub-links a:hover {
-  background: var(--accent);
-  color: white;
-  transform: translateY(-2px);
-}
-.profiles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-.profile-card {
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 24px;
-  text-decoration: none;
-  color: var(--text);
-  display: block;
-  transition: all 0.3s;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.profile-card::after {
-  content: '';
-  position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle at center, rgba(167,139,250,0.15), transparent 50%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-.profile-card:hover::after { opacity: 1; }
-.profile-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.profile-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 18px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 800;
-  color: white;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: -0.05em;
-  position: relative;
-  z-index: 1;
-}
-.profile-card h3 {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 1;
-}
-.profile-card p {
-  font-size: 13px;
-  color: var(--text-2);
-  margin-bottom: 14px;
-  line-height: 1.5;
-  position: relative;
-  z-index: 1;
-}
-.profile-link {
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 1px;
-  position: relative;
-  z-index: 1;
-}
-.education-grid { display: grid; gap: 16px; }
-.education-item {
-  background: var(--surface);
-  padding: 24px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  transition: all 0.3s;
-}
-.education-item:hover { border-color: var(--accent); transform: translateX(8px); box-shadow: var(--glow); }
-.education-item .deg-icon {
-  font-size: 28px;
-  width: 56px; height: 56px;
-  background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(251,191,36,0.2));
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border: 1px solid var(--border);
-}
-.education-item h4 {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.education-item .school { font-size: 14px; color: var(--text-2); }
-.contact-section {
-  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
-  text-align: center;
-  padding: 100px 32px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
-.contact-section::before {
-  content: '';
-  position: absolute;
-  top: -100px; left: 50%;
-  transform: translateX(-50%);
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  opacity: 0.1;
-  pointer-events: none;
-}
+.featured-research { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 40px; border-radius: 16px; max-width: 900px; margin: 0 auto; }
+.featured-research .tag { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent); font-size: 12px; padding: 6px 14px; border-radius: 6px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; border: 1px solid rgba(167,139,250,0.3); }
+.featured-research h3 { font-size: 26px; font-weight: 700; margin-bottom: 14px; line-height: 1.3; }
+.featured-research p { font-size: 16px; line-height: 1.8; color: var(--text-2); margin-bottom: 20px; }
+.cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 60px; }
+.cta-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; transition: all 0.3s; cursor: pointer; display: block; text-decoration: none; color: inherit; }
+.cta-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.cta-icon { font-size: 48px; margin-bottom: 20px; }
+.cta-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.cta-card p { font-size: 15px; color: var(--text-2); line-height: 1.7; margin-bottom: 24px; }
+.cta-link { color: var(--accent); font-weight: 600; font-size: 14px; font-family: 'JetBrains Mono', monospace; }
+.contact-section { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); text-align: center; padding: 100px 32px; border-top: 1px solid var(--border); }
 .contact-section h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
 .contact-section p { font-size: 18px; margin-bottom: 36px; color: var(--text-2); max-width: 600px; margin-left: auto; margin-right: auto; }
-.social-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.social-links a::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  transition: left 0.4s;
-  z-index: -1;
-}
-.social-links a:hover::before { left: 0; }
-.social-links a:hover { color: white; border-color: transparent; transform: translateY(-4px); }
-footer {
-  text-align: center;
-  padding: 40px 32px;
-  color: var(--text-3);
-  font-size: 14px;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-}
-footer p { margin: 6px 0; }
-footer .heart { color: #ef4444; animation: heartbeat 1.5s infinite; }
-@keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-.avatar {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 28px;
-  position: relative;
-  border-radius: 50%;
-  animation: avatarFloat 4s ease-in-out infinite;
-}
-@keyframes avatarFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.avatar-ring {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
-  animation: ringSpin 6s linear infinite;
-  opacity: 0.9;
-}
-.avatar-ring::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  background: var(--bg);
-  border-radius: 50%;
-}
-@keyframes ringSpin { to { transform: rotate(360deg); } }
-.avatar-img {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 134px;
-  height: 134px;
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 2;
-  background: var(--bg-2);
-}
-.avatar-initials {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 134px;
-  height: 134px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 52px;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.05em;
-  font-family: 'Inter', sans-serif;
-  z-index: 2;
-  box-shadow: 0 8px 30px rgba(167,139,250,0.3);
-}
-.video-wrapper {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
-.video-wrapper iframe {
-  width: 100%;
-  max-width: 600px;
-  height: 500px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--bg-2);
-}
-.video-caption {
-  margin-top: 16px;
-  color: var(--text-2);
-  font-size: 14px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.video-caption .live-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: var(--accent-3);
-  border-radius: 50%;
-  margin-right: 8px;
-  animation: pulse 2s infinite;
-  vertical-align: middle;
-}
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-}
-.blog-card {
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  transition: all 0.3s;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: var(--text);
-  position: relative;
-  overflow: hidden;
-}
-.blog-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.blog-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s;
-}
-.blog-card:hover::before { transform: scaleX(1); }
-.blog-tag {
-  display: inline-block;
-  font-size: 11px;
-  background: rgba(167,139,250,0.15);
-  color: var(--accent);
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 14px;
-  align-self: flex-start;
-  border: 1px solid var(--border-bright);
-}
-.blog-card h3 {
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-.blog-card p {
-  font-size: 14px;
-  color: var(--text-2);
-  line-height: 1.7;
-  margin-bottom: 20px;
-  flex-grow: 1;
-}
-.blog-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--text-3);
-  font-family: 'JetBrains Mono', monospace;
-}
-.blog-meta .read-time { color: var(--accent); }
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .utc-clock { font-size: 10px; padding: 6px 10px; }
-  .section { padding: 60px 20px; }
-  .hero { min-height: 70vh; padding: 40px 20px; }
-}
+.social-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.social-links a { padding: 16px 28px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text); font-size: 15px; font-weight: 600; transition: all 0.3s; }
+.social-links a:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-4px); }
+.theme-toggle { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--accent); border: none; border-radius: 50%; cursor: pointer; z-index: 99; font-size: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(167,139,250,0.4); }
+.theme-toggle:hover { transform: scale(1.1); }
+.scroll-top { position: fixed; bottom: 100px; right: 30px; width: 50px; height: 50px; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; cursor: pointer; z-index: 99; color: var(--text); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { background: var(--accent); color: white; }
+footer { text-align: center; padding: 40px 32px; color: var(--text-3); font-size: 14px; background: var(--bg); border-top: 1px solid var(--border); }
+@media (max-width: 768px) { .nav-links { display: none; } .cta-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-
-<div class="loader" id="loader">
-  <div class="plane-loader">&#9992;&#65039;</div>
-  <div class="loader-text">INITIALIZING</div>
-</div>
-
-<div class="progress-bar" id="progressBar"></div>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<canvas id="particles"></canvas>
-
-<div class="utc-clock" id="utcClock">UTC --:--:--</div>
-
-<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&uarr;</button>
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">&#9790;</button>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -1012,7 +109,6 @@ footer .heart { color: #ef4444; animation: heartbeat 1.5s infinite; }
       <a href="research.html">Research Hub</a>
       <a href="blog.html">Blog</a>
       <a href="resources.html">Resources</a>
-      <a href="#publications">Publications</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -1025,87 +121,35 @@ footer .heart { color: #ef4444; animation: heartbeat 1.5s infinite; }
       <img class="avatar-img" src="profile.jpg" alt="Dr. Vikram Narendran" onerror="this.style.display='none';">
       <div class="avatar-initials">VN</div>
     </div>
-    <div class="hero-tag">AVAILABLE FOR COLLABORATION</div>
+    <div class="hero-tag">ATRS 2026 SPEAKER · PUBLISHED RESEARCHER</div>
     <h1>Dr. Vikram Narendran</h1>
     <div class="typewriter" id="typewriter"></div>
-    <p class="subtitle">25+ years leading full-flight simulator operations and AI-driven reliability. Building voice-commanded AI decision support systems for aviation safety. ATRS 2026 Speaker.</p>
+    <p class="subtitle">25+ years leading full-flight simulator operations and AI-driven reliability. Building voice-commanded AI decision support systems for aviation safety.</p>
     <div class="badge-group">
-      <span class="badge">Doctorate of Business Administration &middot; SP Jain</span>
-      <span class="badge">Masters in Software Engineering &middot; BITS</span>
+      <span class="badge">Doctorate of Business Administration · SP Jain</span>
+      <span class="badge">Masters in Software Engineering · BITS</span>
       <span class="badge">ATRS 2026</span>
       <span class="badge">CAE Senior Engineer</span>
     </div>
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">View Projects &rarr;</a>
-      <a href="https://github.com/VikramNarendran/" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+      <a href="research.html" class="btn btn-primary">Explore Research Hub →</a>
+      <a href="blog.html" class="btn btn-secondary">Read Blog</a>
     </div>
   </div>
-  <div class="scroll-hint">SCROLL &darr;</div>
+  <div class="scroll-hint">SCROLL ↓</div>
 </section>
 
-<section class="section" id="research">
+<section class="section">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">// Featured Research</div>
       <h2>Pioneering AI in Aviation Safety</h2>
     </div>
     <div class="featured-research reveal">
-      <span class="tag">ATRS World Conference 2026 &middot; Beijing</span>
+      <span class="tag">ATRS World Conference 2026 · Beijing</span>
       <h3>Beyond the QRH: A Voice-Commanded AI Decision Support System for Pilots During Critical Emergencies</h3>
-      <p>Presenting a Multi-document Agentic Decision Support System (MADSS) with PLS-SEM validation across 300+ aviation professionals. Demonstrates how domain-specific Small Language Models outperform generic LLMs in regulatory compliance and safety-critical decision making. The system retrieves QRH/FCOM/MEL procedures with AI-generated advisories, helping pilots connect related procedures and avoid common stress-induced traps during emergencies.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="projects">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">// Selected Work</div>
-      <h2>Featured Projects</h2>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card reveal">
-        <div class="icon">&#9992;&#65039;</div>
-        <h3>MADSS &mdash; Aviation SLM</h3>
-        <div class="status">&#9670; Research &middot; ATRS 2026</div>
-        <p>Voice-commanded multi-document agentic decision support system for pilots during emergencies. Retrieves QRH/FCOM/MEL procedures with AI-generated advisories.</p>
-        <div class="tech-tags"><span>Python</span><span>RAG</span><span>LLM Agents</span><span>Voice UI</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="icon">&#128295;</div>
-        <h3>Predictive Maintenance Engine</h3>
-        <div class="status">&#9670; Production &middot; ML</div>
-        <p>Random Forest model reducing simulator downtime by 35% through predictive failure analysis. Integrated with CAE 7000/5000 series. Saved CAD 250K+ annually.</p>
-        <div class="tech-tags"><span>Python</span><span>scikit-learn</span><span>Random Forest</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="icon">&#128230;</div>
-        <h3>Inventory Optimization Engine</h3>
-        <div class="status">&#9670; Production &middot; ML</div>
-        <p>SVM-based SKU classification across 3,000+ parts. Reduced inventory value by CAD 1.6M while maintaining 99.8% part availability across 20+ simulators.</p>
-        <div class="tech-tags"><span>Python</span><span>SVM</span><span>Supply Chain</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="icon">&#128218;</div>
-        <h3>FSTD Knowledge Portal</h3>
-        <div class="status">&#9670; Production &middot; RAG</div>
-        <p>Python/Flask/OpenAI RAG-based simulator chatbot. Reduced documentation search time by 60%. Adopted by all shift teams at Emirates CAE.</p>
-        <div class="tech-tags"><span>Python</span><span>Flask</span><span>RAG</span><span>OpenAI</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="icon">&#128737;&#65039;</div>
-        <h3>AI Governance Framework</h3>
-        <div class="status">&#9670; Research &middot; Under Review</div>
-        <p>TRN-based empirical model for AI governance in aviation. Comparative study of RAG vs agentic AI in emergency procedure retrieval.</p>
-        <div class="tech-tags"><span>PLS-SEM</span><span>Governance</span><span>Empirical</span></div>
-      </div>
-      <div class="project-card reveal">
-        <div class="icon">&#9881;&#65039;</div>
-        <h3>Software Engineering Excellence</h3>
-        <div class="status">&#9670; Production &middot; Legacy Systems</div>
-        <p>Resolved 10-year legacy discrepancies across Hawker 800, Boeing 737/777, Embraer simulators. Integrated ACARS, ATIS, custom IOS pages.</p>
-        <div class="tech-tags"><span>C/C++</span><span>FORTRAN</span><span>Avionics</span></div>
-      </div>
+      <p>Presenting a Multi-document Agentic Decision Support System (MADSS) with PLS-SEM validation across 300+ aviation professionals. Demonstrates how domain-specific Small Language Models outperform generic LLMs in regulatory compliance and safety-critical decision making.</p>
+      <p><strong style="color: var(--accent-2);">→ Explore the full research hub to see all 6 projects, technologies, impact metrics, and publications.</strong></p>
     </div>
   </div>
 </section>
@@ -1113,224 +157,30 @@ footer .heart { color: #ef4444; animation: heartbeat 1.5s infinite; }
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">// Impact</div>
-      <h2>By the Numbers</h2>
+      <div class="section-label">// Explore</div>
+      <h2>Dive Deeper Into My Work</h2>
     </div>
-    <div class="stats-grid">
-      <div class="stat reveal"><div class="number" data-target="25" data-suffix="+">0</div><div class="label">Years aviation engineering</div></div>
-      <div class="stat reveal"><div class="number" data-target="100" data-suffix="%">0</div><div class="label">Audit pass rate</div></div>
-      <div class="stat reveal"><div class="number" data-target="99" data-suffix="%">0</div><div class="label">Simulator availability</div></div>
-      <div class="stat reveal"><div class="number" data-target="35" data-suffix="%">0</div><div class="label">Downtime reduction</div></div>
-      <div class="stat reveal"><div class="number" data-target="1.6" data-suffix="M" data-decimal="1">0</div><div class="label">CAD inventory savings</div></div>
-      <div class="stat reveal"><div class="number" data-target="300" data-suffix="+">0</div><div class="label">Research respondents</div></div>
-    </div>
-  </div>
-</section>
+    <div class="cta-grid">
+      <a href="research.html" class="cta-card reveal">
+        <span class="cta-icon">🔬</span>
+        <h3>Research Hub</h3>
+        <p>Explore all 6 projects with interactive search, filters, detailed metrics, technologies, and publications. Searchable by category, technology, or impact.</p>
+        <span class="cta-link">Explore Projects →</span>
+      </a>
 
-<section class="section" id="publications">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">// Publications</div>
-      <h2>Research &amp; Papers</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <h4>Beyond the QRH: Voice-Commanded AI Decision Support During Critical Emergencies</h4>
-        <div class="pub-meta">ATRS World Conference 2026 &middot; Beijing &middot; Accepted</div>
-        <p>Multi-document agentic decision support system (MADSS) with PLS-SEM validation across 300 aviation professionals.</p>
-      </div>
-      <div class="timeline-item reveal">
-        <h4>Adoption of AI Techniques for Inventory Management: A Case Study in Aviation</h4>
-        <div class="pub-meta">American Journal of Industrial and Business Management &middot; May 2024</div>
-        <p>Published research on ML-driven inventory optimization in aviation maintenance operations.</p>
-        <div class="pub-links">
-          <a href="https://doi.org/10.4236/ajibm.2024.145040" target="_blank">DOI &#8599;</a>
-          <a href="https://www.researchgate.net/profile/Vikram-Cathiyavadi-Grahamspet-Narendran/publication/380981673_Adoption_of_Artificial_Intelligence_Techniques_for_Inventory_Management_A_Case_Study_in_the_Aviation_Sector/links/6658fc160b0d28457475983d/Adoption-of-Artificial-Intelligence-Techniques-for-Inventory-Management-A-Case-Study-in-the-Aviation-Sector.pdf" target="_blank">Read PDF &#8599;</a>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <h4>A TRN Framework-Based Empirical Model for AI Governance in Aviation</h4>
-        <div class="pub-meta">Journal of Aviation/Aerospace Education &amp; Research &middot; Under Review</div>
-        <p>Comparative study of RAG advisory AI vs agentic AI in emergency procedure retrieval. Evidence from PLS-SEM and prototype experiments.</p>
-      </div>
-      <div class="timeline-item reveal">
-        <h4>Doctoral Thesis: Adoption of AI Techniques for Inventory Management</h4>
-        <div class="pub-meta">SP Jain School of Global Management &middot; Indexed in ProQuest</div>
-        <p>Comprehensive research on AI applications in aviation supply chain.</p>
-        <div class="pub-links">
-          <a href="https://www.proquest.com/openview/59e300c09828306ef485a1b3e6a2a96c/1?pq-origsite=gscholar&amp;cbl=2026366&amp;diss=y" target="_blank">View on ProQuest &#8599;</a>
-        </div>
-      </div>
-      <div class="timeline-item reveal">
-        <h4>Featured Talk: AI Governance in Aviation</h4>
-        <div class="pub-meta">AI Summit Abu Dhabi 2025 &middot; Video Feature</div>
-        <p>Featured presentation on AI governance and MADSS framework. Posted by AI Summit on LinkedIn highlighting aviation safety applications.</p>
-        <div class="pub-links">
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7355235269412892672/" target="_blank">Watch Video &#8599;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <a href="blog.html" class="cta-card reveal">
+        <span class="cta-icon">📝</span>
+        <h3>Articles & Insights</h3>
+        <p>6 in-depth articles on MADSS, predictive maintenance, AI governance, research methodology, and 25 years of lessons from the simulator floor.</p>
+        <span class="cta-link">Read Articles →</span>
+      </a>
 
-<section class="section" id="video">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">// Featured Talk</div>
-      <h2>AI Governance in Aviation</h2>
-    </div>
-    <div class="video-wrapper reveal">
-      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7355235269412892672" frameborder="0" allowfullscreen title="AI Summit Abu Dhabi 2025 - Featured Talk"></iframe>
-      <div class="video-caption"><span class="live-dot"></span>AI SUMMIT ABU DHABI 2025 &middot; FEATURED ON LINKEDIN</div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="profiles">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">// Academic Network</div>
-      <h2>Research Profiles &amp; Citations</h2>
-    </div>
-    <div class="profiles-grid">
-      <a href="https://scholar.google.com/citations?user=04oWlwIAAAAJ&amp;hl=en" target="_blank" class="profile-card reveal">
-        <div class="profile-icon">GS</div>
-        <h3>Google Scholar</h3>
-        <p>Publications, citations &amp; impact metrics</p>
-        <span class="profile-link">VIEW PROFILE &rarr;</span>
+      <a href="resources.html" class="cta-card reveal">
+        <span class="cta-icon">🎬</span>
+        <h3>Resources & Speaking</h3>
+        <p>Featured video from AI Summit Abu Dhabi 2025, speaking engagements, conference presentations, and upcoming video tutorials.</p>
+        <span class="cta-link">Watch Videos →</span>
       </a>
-      <a href="https://orcid.org/0000-0002-5366-2636" target="_blank" class="profile-card reveal">
-        <div class="profile-icon">iD</div>
-        <h3>ORCID</h3>
-        <p>0000-0002-5366-2636</p>
-        <span class="profile-link">VIEW RECORD &rarr;</span>
-      </a>
-      <a href="https://www.researchgate.net/profile/Vikram-Cathiyavadi-Grahamspet-Narendran" target="_blank" class="profile-card reveal">
-        <div class="profile-icon">RG</div>
-        <h3>ResearchGate</h3>
-        <p>Research papers &amp; collaborations</p>
-        <span class="profile-link">VIEW PROFILE &rarr;</span>
-      </a>
-      <a href="https://www.proquest.com/openview/59e300c09828306ef485a1b3e6a2a96c/1?pq-origsite=gscholar&amp;cbl=2026366&amp;diss=y" target="_blank" class="profile-card reveal">
-        <div class="profile-icon">PQ</div>
-        <h3>ProQuest</h3>
-        <p>Doctoral thesis indexed</p>
-        <span class="profile-link">VIEW THESIS &rarr;</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="blog">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">// Writing &amp; Insights</div>
-      <h2>Latest Articles</h2>
-    </div>
-    <div class="blog-grid">
-      <a href="blog.html#madss" class="blog-card reveal">
-        <span class="blog-tag">MADSS</span>
-        <h3>Beyond the QRH: Why I'm Building MADSS for Aviation Safety</h3>
-        <p>The story behind my ATRS 2026 paper. Why generic LLMs aren't enough for safety-critical aviation decisions, and how a multi-document agentic system changes the game.</p>
-        <div class="blog-meta"><span>Apr 2026</span><span class="read-time">8 min read</span></div>
-      </a>
-      <a href="blog.html#random-forest" class="blog-card reveal">
-        <span class="blog-tag">Machine Learning</span>
-        <h3>How Random Forest Cut Simulator Downtime by 35%</h3>
-        <p>A deep dive into the predictive maintenance model deployed at CAE. Feature engineering, model selection, and the operational changes that saved CAD 250K+ annually.</p>
-        <div class="blog-meta"><span>Mar 2026</span><span class="read-time">12 min read</span></div>
-      </a>
-      <a href="blog.html#slm-vs-llm" class="blog-card reveal">
-        <span class="blog-tag">AI &amp; Aviation</span>
-        <h3>Domain-Specific SLMs vs Generic LLMs: A Pilot's Perspective</h3>
-        <p>Why a fine-tuned aviation Small Language Model beats GPT-4 for cockpit decision support. Lessons from validating with 300+ aviation professionals.</p>
-        <div class="blog-meta"><span>Feb 2026</span><span class="read-time">10 min read</span></div>
-      </a>
-      <a href="blog.html#pls-sem" class="blog-card reveal">
-        <span class="blog-tag">Research</span>
-        <h3>PLS-SEM Validation: Testing MADSS with 300 Pilots</h3>
-        <p>The research methodology behind validating an AI decision support system. How partial least squares structural equation modeling proves real-world impact.</p>
-        <div class="blog-meta"><span>Jan 2026</span><span class="read-time">7 min read</span></div>
-      </a>
-      <a href="blog.html#svm-inventory" class="blog-card reveal">
-        <span class="blog-tag">Supply Chain</span>
-        <h3>From CAD 1.6M Savings: SVM in Aviation Inventory</h3>
-        <p>The full case study from my published paper. How support vector machines classified 3,000+ SKUs and transformed inventory operations across 20+ simulators.</p>
-        <div class="blog-meta"><span>Dec 2025</span><span class="read-time">9 min read</span></div>
-      </a>
-      <a href="blog.html#25-years" class="blog-card reveal">
-        <span class="blog-tag">Leadership</span>
-        <h3>25 Years in FSTD: Lessons from the Simulator Floor</h3>
-        <p>What I've learned about leadership, regulatory compliance, and building high-performance engineering teams across Mumbai, Dubai, and Dallas.</p>
-        <div class="blog-meta"><span>Nov 2025</span><span class="read-time">11 min read</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="skills">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">// Expertise</div>
-      <h2>Technical Stack</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-box reveal">
-        <h3>&#129302; AI/ML &amp; Data Science</h3>
-        <ul>
-          <li>LLM &amp; Agentic AI (RAG, multi-agent systems)</li>
-          <li>Predictive Maintenance Models</li>
-          <li>SVM, Random Forest, Classification</li>
-          <li>PLS-SEM Statistical Analysis</li>
-          <li>Feature Engineering &amp; Data Analysis</li>
-        </ul>
-      </div>
-      <div class="skill-box reveal">
-        <h3>&#128187; Programming</h3>
-        <ul>
-          <li>Python (scikit-learn, pandas, numpy)</li>
-          <li>C/C++/FORTRAN (debugging, optimization)</li>
-          <li>Flask &amp; web frameworks</li>
-          <li>Linux &amp; bash scripting</li>
-          <li>TypeScript/Angular</li>
-        </ul>
-      </div>
-      <div class="skill-box reveal">
-        <h3>&#9992;&#65039; FSTD &amp; Aviation</h3>
-        <ul>
-          <li>Full Flight Simulator Operations &amp; Maintenance</li>
-          <li>Compliance: EASA, FAA, GCAA, GACA, DGCA</li>
-          <li>QRH, FCOM, MEL, Service Bulletins</li>
-          <li>Avionics Integration &amp; Troubleshooting</li>
-          <li>Device Configuration &amp; Fidelity Control</li>
-        </ul>
-      </div>
-      <div class="skill-box reveal">
-        <h3>&#128747; Aircraft Types</h3>
-        <ul>
-          <li>Airbus A320/A330/A340</li>
-          <li>Boeing 737/777</li>
-          <li>Hawker 800A/800XP/800XPi</li>
-          <li>Embraer &amp; Gulfstream</li>
-          <li>Bell-412 Helicopter</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">// Academic Background</div>
-      <h2>Education</h2>
-    </div>
-    <div class="education-grid">
-      <div class="education-item reveal"><div class="deg-icon">&#127891;</div><div><h4>Doctorate of Business Administration (TEQSA AQF Level 10)</h4><div class="school">SP Jain School of Global Management, Sydney, Australia</div></div></div>
-      <div class="education-item reveal"><div class="deg-icon">&#128187;</div><div><h4>Masters Degree in Software Engineering</h4><div class="school">Birla Institute of Technology and Science (BITS), India</div></div></div>
-      <div class="education-item reveal"><div class="deg-icon">&#128202;</div><div><h4>Master of Business Administration (MBA)</h4><div class="school">SP Jain School of Global Management, Australia</div></div></div>
-      <div class="education-item reveal"><div class="deg-icon">&#129504;</div><div><h4>Post Graduate Diploma in Data Science</h4><div class="school">Purdue University &amp; Simplilearn, USA</div></div></div>
-      <div class="education-item reveal"><div class="deg-icon">&#9889;</div><div><h4>Bachelor of Engineering, Electronics &amp; Communication</h4><div class="school">Madras University, India</div></div></div>
     </div>
   </div>
 </section>
@@ -1338,12 +188,12 @@ footer .heart { color: #ef4444; animation: heartbeat 1.5s infinite; }
 <section class="contact-section" id="contact">
   <div class="container">
     <div class="section-label" style="color: var(--accent);">// Get in Touch</div>
-    <h2>Let's Build the Future of Aviation AI</h2>
+    <h2>Let's Collaborate</h2>
     <p>Open to research collaborations, speaking engagements, and AI/aviation consulting opportunities</p>
     <div class="social-links">
       <a href="https://github.com/VikramNarendran/" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/dr-vikram-narendran-cathiyavadi-817a3422/" target="_blank">LinkedIn</a>
-      <a href="https://scholar.google.com/citations?user=04oWlwIAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>
+      <a href="https://scholar.google.com/citations?user=04oWlwIAAAAJ&hl=en" target="_blank">Google Scholar</a>
       <a href="https://orcid.org/0000-0002-5366-2636" target="_blank">ORCID</a>
       <a href="mailto:vikram_narendran17@outlook.com">Email</a>
       <a href="tel:+14692641478">Phone</a>
@@ -1352,234 +202,51 @@ footer .heart { color: #ef4444; animation: heartbeat 1.5s infinite; }
 </section>
 
 <footer>
-  <p>&copy; 2026 Dr. Vikram Narendran &middot; Built with <span class="heart">&hearts;</span> in Euless, TX</p>
-  <p>Senior FSTD Engineer &middot; AI/ML Researcher &middot; ATRS 2026 Speaker</p>
+  <p>&copy; 2026 Dr. Vikram Narendran · Built with ♥ in Euless, TX</p>
+  <p>Senior FSTD Engineer · AI/ML Researcher · ATRS 2026 Speaker</p>
 </footer>
 
+<button class="scroll-top" id="scrollTop">↑</button>
+<button class="theme-toggle" id="themeToggle">🌙</button>
+
 <script>
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.getElementById('loader').classList.add('hidden');
-  }, 1200);
-});
-
-var cursor = document.getElementById('cursor');
-var cursorDot = document.getElementById('cursorDot');
-if (window.matchMedia('(min-width: 1025px)').matches) {
-  document.addEventListener('mousemove', function(e) {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    cursorDot.style.left = e.clientX + 'px';
-    cursorDot.style.top = e.clientY + 'px';
-  });
-  var interactiveEls = document.querySelectorAll('a, button, .project-card, .stat, .badge');
-  interactiveEls.forEach(function(el) {
-    el.addEventListener('mouseenter', function() { cursor.classList.add('expand'); });
-    el.addEventListener('mouseleave', function() { cursor.classList.remove('expand'); });
-  });
-}
-
-var canvas = document.getElementById('particles');
-var ctx = canvas.getContext('2d');
-var particles = [];
-var mouseX = 0, mouseY = 0;
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-document.addEventListener('mousemove', function(e) { mouseX = e.clientX; mouseY = e.clientY; });
-
-function Particle() {
-  this.x = Math.random() * canvas.width;
-  this.y = Math.random() * canvas.height;
-  this.vx = (Math.random() - 0.5) * 0.5;
-  this.vy = (Math.random() - 0.5) * 0.5;
-  this.size = Math.random() * 1.5 + 0.5;
-}
-Particle.prototype.update = function() {
-  this.x += this.vx;
-  this.y += this.vy;
-  if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-  if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-  var dx = mouseX - this.x;
-  var dy = mouseY - this.y;
-  var dist = Math.sqrt(dx*dx + dy*dy);
-  if (dist < 100) {
-    this.x -= dx * 0.01;
-    this.y -= dy * 0.01;
-  }
-};
-Particle.prototype.draw = function() {
-  var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-  ctx.fillStyle = isDark ? 'rgba(167,139,250,0.5)' : 'rgba(124,58,237,0.4)';
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-  ctx.fill();
-};
-
-for (var i = 0; i < 80; i++) particles.push(new Particle());
-
-function connectParticles() {
-  var isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-  for (var i = 0; i < particles.length; i++) {
-    for (var j = i + 1; j < particles.length; j++) {
-      var dx = particles[i].x - particles[j].x;
-      var dy = particles[i].y - particles[j].y;
-      var dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) {
-        var opacity = (1 - dist / 120) * 0.3;
-        ctx.strokeStyle = isDark ? 'rgba(167,139,250,' + opacity + ')' : 'rgba(124,58,237,' + (opacity * 0.7) + ')';
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(function(p) { p.update(); p.draw(); });
-  connectParticles();
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-var phrases = [
-  'Senior FSTD Engineer',
-  'AI/ML Researcher',
-  'Aviation Domain Expert',
-  'ATRS 2026 Speaker',
-  'Published Researcher - ProQuest indexed',
-  'Building MADSS - Aviation SLM'
-];
-var phraseIdx = 0;
-var charIdx = 0;
-var isDeleting = false;
+var phrases = ['Senior FSTD Engineer', 'AI/ML Researcher', 'Aviation Domain Expert', 'ATRS 2026 Speaker', 'Published Researcher', 'Building MADSS'];
+var phraseIdx = 0, charIdx = 0, isDeleting = false;
 var typewriterEl = document.getElementById('typewriter');
-
 function typeWriter() {
   var currentPhrase = phrases[phraseIdx];
   if (!isDeleting) {
     typewriterEl.innerHTML = currentPhrase.substring(0, charIdx + 1) + '<span class="cursor-blink"></span>';
     charIdx++;
-    if (charIdx === currentPhrase.length) {
-      isDeleting = true;
-      setTimeout(typeWriter, 2000);
-      return;
-    }
+    if (charIdx === currentPhrase.length) { isDeleting = true; setTimeout(typeWriter, 2000); return; }
   } else {
     typewriterEl.innerHTML = currentPhrase.substring(0, charIdx - 1) + '<span class="cursor-blink"></span>';
     charIdx--;
-    if (charIdx === 0) {
-      isDeleting = false;
-      phraseIdx = (phraseIdx + 1) % phrases.length;
-    }
+    if (charIdx === 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; }
   }
   setTimeout(typeWriter, isDeleting ? 40 : 80);
 }
 setTimeout(typeWriter, 500);
-
-function updateClock() {
-  var now = new Date();
-  var utc = now.toISOString().substring(11, 19);
-  document.getElementById('utcClock').innerHTML = '<span style="color:#22c55e">&#9679;</span> UTC ' + utc;
-}
-updateClock();
-setInterval(updateClock, 1000);
-
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal').forEach((el, idx) => {
+    setTimeout(() => el.classList.add('visible'), idx * 100 + 300);
+  });
+});
 window.addEventListener('scroll', function() {
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-  var progress = (scrollTop / scrollHeight) * 100;
-  document.getElementById('progressBar').style.width = progress + '%';
-  
-  var scrollTopBtn = document.getElementById('scrollTop');
-  if (scrollTop > 400) scrollTopBtn.classList.add('visible');
-  else scrollTopBtn.classList.remove('visible');
+  document.getElementById('scrollTop').classList.toggle('visible', scrollTop > 400);
 });
-
-document.getElementById('scrollTop').addEventListener('click', function() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-var themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', function() {
+document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+document.getElementById('themeToggle').addEventListener('click', function() {
   var html = document.documentElement;
-  var current = html.getAttribute('data-theme');
-  if (current === 'light') {
+  if (html.getAttribute('data-theme') === 'light') {
     html.removeAttribute('data-theme');
-    themeToggle.innerHTML = '&#9790;';
+    this.textContent = '🌙';
   } else {
     html.setAttribute('data-theme', 'light');
-    themeToggle.innerHTML = '&#9728;';
+    this.textContent = '☀️';
   }
 });
-
-var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      if (entry.target.classList.contains('stat')) {
-        animateCounter(entry.target.querySelector('.number'));
-      }
-    }
-  });
-}, observerOptions);
-document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
-
-function animateCounter(el) {
-  if (el.dataset.animated) return;
-  el.dataset.animated = 'true';
-  var target = parseFloat(el.dataset.target);
-  var suffix = el.dataset.suffix || '';
-  var decimal = parseInt(el.dataset.decimal || 0);
-  var duration = 2000;
-  var start = performance.now();
-  function update(now) {
-    var elapsed = now - start;
-    var progress = Math.min(elapsed / duration, 1);
-    var eased = 1 - Math.pow(1 - progress, 3);
-    var value = target * eased;
-    el.textContent = value.toFixed(decimal) + suffix;
-    if (progress < 1) requestAnimationFrame(update);
-    else el.textContent = target.toFixed(decimal) + suffix;
-  }
-  requestAnimationFrame(update);
-}
-
-document.querySelectorAll('.project-card').forEach(function(card) {
-  card.addEventListener('mousemove', function(e) {
-    var rect = card.getBoundingClientRect();
-    var x = ((e.clientX - rect.left) / rect.width) * 100;
-    var y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--mx', x + '%');
-    card.style.setProperty('--my', y + '%');
-    var rotateX = (y - 50) / 15;
-    var rotateY = (50 - x) / 15;
-    card.style.transform = 'translateY(-8px) perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
-  });
-  card.addEventListener('mouseleave', function() {
-    card.style.transform = '';
-  });
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    var target = document.querySelector(this.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-console.log('%c+  Dr. Vikram Narendran', 'font-size: 24px; font-weight: bold; color: #63b3ed;');
-console.log('%cAI/ML Engineer - Aviation Expert - ATRS 2026 Speaker', 'font-size: 14px; color: #94a3b8;');
-console.log('%cBuilt with passion. Reach out: vikram_narendran17@outlook.com', 'font-size: 12px; color: #64748b;');
 </script>
 </body>
 </html>
