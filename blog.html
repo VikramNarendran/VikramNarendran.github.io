@@ -48,6 +48,10 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .article-card p { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px; }
 .article-meta { display: flex; gap: 16px; font-size: 12px; color: var(--text-2); font-family: 'JetBrains Mono', monospace; }
 
+#searchInput { width: 100%; padding: 14px 16px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif; transition: all 0.3s; }
+#searchInput:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(167,139,250,0.2); }
+#searchInput::placeholder { color: var(--text-2); opacity: 0.6; }
+
 /* Article Full View */
 .article-view { display: none; padding: 60px 32px; }
 .article-view.active { display: block; }
@@ -98,7 +102,13 @@ footer { text-align: center; padding: 40px 32px; color: #6b6791; font-size: 13px
 <!-- ARTICLES LIST VIEW -->
 <section class="articles-list" id="articlesList">
   <div class="container">
+    <div style="margin-bottom: 40px;">
+      <input type="text" id="searchInput" placeholder="Search articles by title, tag, or topic...">
+    </div>
     <div class="articles-grid" id="articlesGrid"></div>
+    <div id="noResults" style="display: none; text-align: center; padding: 40px 20px; color: var(--text-2);">
+      <p style="font-size: 16px;">No articles found matching your search.</p>
+    </div>
   </div>
 </section>
 
@@ -480,9 +490,18 @@ function init() {
   setupTheme();
 }
 
-function renderArticleList() {
+function renderArticleList(filtered = articles) {
   const grid = document.getElementById('articlesGrid');
-  grid.innerHTML = articles.map(article => `
+  const noResults = document.getElementById('noResults');
+  
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    noResults.style.display = 'block';
+    return;
+  }
+  
+  noResults.style.display = 'none';
+  grid.innerHTML = filtered.map(article => `
     <div class="article-card" onclick="showArticle(${article.id})">
       <span class="article-tag">${article.tag}</span>
       <h3>${article.title}</h3>
@@ -493,6 +512,22 @@ function renderArticleList() {
       </div>
     </div>
   `).join('');
+}
+
+function filterArticles(query) {
+  if (!query.trim()) {
+    renderArticleList(articles);
+    return;
+  }
+  
+  const lowerQuery = query.toLowerCase();
+  const filtered = articles.filter(article => 
+    article.title.toLowerCase().includes(lowerQuery) ||
+    article.tag.toLowerCase().includes(lowerQuery) ||
+    article.preview.toLowerCase().includes(lowerQuery)
+  );
+  
+  renderArticleList(filtered);
 }
 
 function showArticle(id) {
@@ -521,6 +556,11 @@ function setupTheme() {
       document.documentElement.setAttribute('data-theme', 'light');
       this.innerHTML = '☀️';
     }
+  });
+  
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', function(e) {
+    filterArticles(e.target.value);
   });
 }
 
