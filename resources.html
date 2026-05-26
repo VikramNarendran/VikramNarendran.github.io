@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources & Speaking | Dr. Vikram Narendran</title>
+<meta name="description" content="Videos, presentations, and speaking engagements in AI governance and aviation safety.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a18;
+  --bg-2: #11102a;
+  --bg-3: #1a1640;
+  --surface: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+  --text: #e9e6f5;
+  --text-2: #a8a3c9;
+  --text-3: #6b6791;
+  --accent: #a78bfa;
+  --accent-2: #fbbf24;
+}
+[data-theme="light"] {
+  --bg: #faf8ff;
+  --bg-2: #ffffff;
+  --bg-3: #f3efff;
+  --surface: rgba(0,0,0,0.02);
+  --border: rgba(0,0,0,0.08);
+  --text: #1a1240;
+  --text-2: #5a4d8c;
+  --text-3: #8a82b8;
+  --accent: #7c3aed;
+  --accent-2: #d97706;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,24,0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 18px 0;
+}
+[data-theme="light"] .nav { background: rgba(255,255,255,0.7); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-name {
+  font-weight: 700;
+  font-size: 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.header {
+  padding: 80px 32px 60px;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-3) 100%);
+}
+.header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header p {
+  font-size: 18px;
+  color: var(--text-2);
+  max-width: 700px;
+}
+.section { padding: 60px 32px; }
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: var(--text);
+}
+.section-label {
+  font-size: 12px;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+}
+.video-card {
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.video-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+.video-thumbnail {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  border-bottom: 1px solid var(--border);
+}
+.video-content {
+  padding: 24px;
+}
+.video-tag {
+  display: inline-block;
+  font-size: 11px;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.video-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.video-date {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.video-description {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.video-link:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 20px rgba(167,139,250,0.3);
+}
+.featured-video {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.featured-video h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.featured-video p {
+  font-size: 16px;
+  color: var(--text-2);
+  max-width: 600px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+.video-embed {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.video-embed iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+.speaking-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.speaking-timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2), transparent);
+}
+.speaking-item {
+  position: relative;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.speaking-item:hover {
+  border-color: var(--accent);
+  transform: translateX(8px);
+}
+.speaking-item::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 28px;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.speaking-item h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.speaking-meta {
+  font-size: 13px;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 12px;
+}
+.speaking-item p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+.theme-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 99;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(167,139,250,0.4);
+  transition: transform 0.3s;
+}
+.theme-toggle:hover { transform: scale(1.1) rotate(180deg); }
+footer {
+  text-align: center;
+  padding: 40px 32px;
+  color: var(--text-3);
+  font-size: 14px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+  .header h1 { font-size: 32px; }
+  .videos-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .video-embed iframe { height: 300px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Dr. Vikram Narendran</a>
+    <div class="nav-links">
+      <a href="research.html">Research</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <div class="container">
+    <h1>Resources & Speaking</h1>
+    <p>Videos, presentations, and speaking engagements in AI governance, aviation safety, and research.</p>
+  </div>
+</header>
+
+<!-- Featured Video -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">// Featured Talk</div>
+    <h2 class="section-title">AI Governance in Aviation</h2>
+    <div class="featured-video">
+      <h2>AI Summit Abu Dhabi 2025</h2>
+      <p>Featured presentation on AI governance frameworks and the MADSS decision support system for pilots during critical emergencies.</p>
+      <div class="video-embed">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7355235269412892672/" frameborder="0" allowfullscreen title="AI Summit Abu Dhabi 2025 - AI Governance"></iframe>
+      </div>
+      <span style="font-size: 12px; color: var(--text-3); font-family: 'JetBrains Mono', monospace;">LIVE ● Posted by AI Summit Abu Dhabi on LinkedIn</span>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Videos -->
+<section class="section" style="background: var(--bg-2);">
+  <div class="container">
+    <div class="section-label">// Recorded Content</div>
+    <h2 class="section-title">Video Library</h2>
+    <div class="videos-grid">
+      <div class="video-card">
+        <div class="video-thumbnail">🔬</div>
+        <div class="video-content">
+          <span class="video-tag">Research</span>
+          <h3>MADSS: Voice-Commanded AI for Aviation Safety</h3>
+          <p class="video-date">Coming Soon</p>
+          <p class="video-description">Deep dive into the Multi-document Agentic Decision Support System and how it improves pilot decision-making during emergencies.</p>
+          <a href="#" class="video-link" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</a>
+        </div>
+      </div>
+      
+      <div class="video-card">
+        <div class="video-thumbnail">🤖</div>
+        <div class="video-content">
+          <span class="video-tag">Machine Learning</span>
+          <h3>Predictive Maintenance: From Data to Operations</h3>
+          <p class="video-date">Coming Soon</p>
+          <p class="video-description">How Random Forest models reduced simulator downtime by 35%. Case study from CAE Dallas operations.</p>
+          <a href="#" class="video-link" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</a>
+        </div>
+      </div>
+      
+      <div class="video-card">
+        <div class="video-thumbnail">🛡️</div>
+        <div class="video-content">
+          <span class="video-tag">AI Governance</span>
+          <h3>Governance Frameworks for Safety-Critical AI</h3>
+          <p class="video-date">Coming Soon</p>
+          <p class="video-description">Research presentation on TRN framework and empirical models for AI governance in aviation domains.</p>
+          <a href="#" class="video-link" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Speaking Engagements -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">// Speaking Engagements</div>
+    <h2 class="section-title">Conferences & Presentations</h2>
+    <div class="speaking-timeline">
+      <div class="speaking-item">
+        <h3>ATRS World Conference 2026</h3>
+        <div class="speaking-meta">Beijing · July 2026 · ACCEPTED</div>
+        <p><strong>Paper:</strong> "Beyond the QRH: A Voice-Commanded AI Decision Support System for Pilots During Critical Emergencies"</p>
+        <p style="margin-top: 12px;">Presenting research on MADSS with PLS-SEM validation across 300+ aviation professionals.</p>
+      </div>
+      
+      <div class="speaking-item">
+        <h3>AI Summit Abu Dhabi 2025</h3>
+        <div class="speaking-meta">Abu Dhabi · 2025 · FEATURED</div>
+        <p><strong>Presentation:</strong> "AI Governance in Aviation: From Research to Operations"</p>
+        <p style="margin-top: 12px;">Featured speaker discussing governance frameworks and real-world implementation of AI decision support systems.</p>
+      </div>
+      
+      <div class="speaking-item">
+        <h3>Looking for Speaking Opportunities</h3>
+        <div class="speaking-meta">Topics Available · Collaboration Welcome</div>
+        <p>I'm interested in speaking opportunities on:</p>
+        <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-2);">
+          <li>AI in Safety-Critical Domains</li>
+          <li>Domain-Specific Language Models vs Generic LLMs</li>
+          <li>Predictive Maintenance & ML Operations</li>
+          <li>AI Governance & Regulatory Frameworks</li>
+          <li>Aviation Engineering & AI Innovation</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>Interested? <a href="mailto:vikram_narendran17@outlook.com" style="color: var(--accent); font-weight: 700;">Get in touch</a></strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Dr. Vikram Narendran | Resources & Speaking</p>
+  <p>ATRS 2026 Speaker | AI Summit Abu Dhabi 2025 | Conference Presenter</p>
+</footer>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">&#9790;</button>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click', function() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  if (current === 'light') {
+    html.removeAttribute('data-theme');
+    this.innerHTML = '&#9790;';
+  } else {
+    html.setAttribute('data-theme', 'light');
+    this.innerHTML = '&#9728;';
+  }
+});
+</script>
+</body>
+</html>
