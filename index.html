@@ -32,6 +32,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .nav-links a { color: var(--text-2); text-decoration: none; font-size: 14px; font-weight: 500; }
 .nav-links a:hover { color: var(--accent); }
 .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.time-top { text-align: center; padding: 30px 0 16px 0; font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--accent); }
 .hero { min-height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 32px; }
 .avatar { width: 120px; height: 120px; margin: 0 auto 24px; position: relative; }
 .avatar-ring { position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent)); animation: spin 6s linear infinite; }
@@ -48,16 +49,18 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; }
 .btn-primary:hover { transform: translateY(-2px); }
 .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
-.section { padding: 80px 32px; }
+
+.about-section { background: var(--surface); border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin: 60px auto; max-width: 900px; text-align: left; }
+.about-section h3 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--accent); }
+.about-section p { font-size: 15px; line-height: 1.8; color: var(--text-2); margin-bottom: 12px; }
+.about-credit { font-size: 12px; color: var(--text-3); margin-top: 16px; font-style: italic; }
+
+.section { padding: 35px 32px; }
 .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 48px; text-align: center; }
 .featured { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 40px; border-radius: 12px; margin: 0 auto 60px; max-width: 900px; }
 .featured .tag { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent); font-size: 11px; padding: 6px 12px; border-radius: 6px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; }
 .featured h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
 .featured p { font-size: 15px; line-height: 1.8; color: var(--text-2); }
-
-.time-box { background: var(--surface); border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin: 60px auto; max-width: 700px; text-align: center; }
-.time-label { font-size: 14px; color: var(--text-2); margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
-.time-display { font-size: 32px; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
 
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin: 60px 0; }
 .stat { background: var(--surface); border: 1px solid var(--border); padding: 30px 20px; border-radius: 12px; text-align: center; }
@@ -90,10 +93,12 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--tex
 
 footer { text-align: center; padding: 40px 32px; color: #6b6791; font-size: 13px; border-top: 1px solid var(--border); }
 
-@media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2rem; } .time-display { font-size: 24px; } }
+@media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2rem; } .about-section { text-align: center; } }
 </style>
 </head>
 <body>
+
+<div class="time-top" id="timeTop">CDT -- Loading --</div>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -111,7 +116,7 @@ footer { text-align: center; padding: 40px 32px; color: #6b6791; font-size: 13px
   <div style="max-width: 900px; width: 100%;">
     <div class="avatar">
       <div class="avatar-ring"></div>
-      <div class="avatar-text">VN</div>
+      <img src="profile.jpg" alt="Dr. Vikram Narendran" class="avatar-img" style="position: absolute; inset: 3px; border-radius: 50%; width: 114px; height: 114px; object-fit: cover; z-index: 2;">
     </div>
     <h1>Dr. Vikram Narendran</h1>
     <div class="typewriter" id="typewriter">Senior FSTD Engineer</div>
@@ -130,17 +135,19 @@ footer { text-align: center; padding: 40px 32px; color: #6b6791; font-size: 13px
 
 <section class="section">
   <div class="container">
-    <h2 class="section-title">Pioneering AI in Aviation Safety</h2>
-    <div class="featured">
-      <span class="tag">ATRS World Conference 2026 · Beijing</span>
-      <h3>Beyond the QRH: Voice-Commanded AI for Emergency Decisions</h3>
-      <p>Multi-document Agentic Decision Support System (MADSS) validated with 300+ aviation professionals.</p>
+    <div class="about-section">
+      <h3>About Me</h3>
+      <p>I'm a systems-driven technologist with a Doctor of Business Administration from SP Jain School of Global Management, where my research explored AI techniques for inventory optimization. My thesis is indexed on ProQuest, and I have research papers under review in respected journals. I hold an EMBA in Operations and Finance from SP Jain (ranked #23 globally by QS), a Master's in Software Engineering from BITS Pilani, and a Bachelor's in Electronics. My postgraduate work spans full-stack data science, Python, machine learning, Power BI, and core data science methodologies.</p>
+      <p>Over a decade in aviation and simulation, I've solved engineering challenges, supported embedded systems, and driven digital transformation. My academic work uses PLS-SEM structural modeling to quantify how AI decisions impact operational efficiency. I'm passionate about applied AI—developing supervised, unsupervised, and deep learning models, exploring Generative AI, and solving practical business problems with both structured and unstructured data.</p>
+      <p>I bring hands-on experience with C, C++, and C#, solid data structures and algorithms knowledge, and fluency in SQL and NoSQL (MongoDB) ecosystems. I'm open to collaborating on thoughtful, forward-looking projects in AI, simulation, or systems strategy where I can contribute meaningfully and continue growing.</p>
+      <div class="about-credit">— From my LinkedIn profile</div>
     </div>
+  </div>
+</section>
 
-    <div class="time-box">
-      <div class="time-label">Current Time and Date in USA, Dallas is:</div>
-      <div class="time-display" id="timeDisplay">CDT -- Loading --</div>
-    </div>
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Key Achievements</h2>
 
     <div class="stats">
       <div class="stat">
@@ -173,17 +180,28 @@ footer { text-align: center; padding: 40px 32px; color: #6b6791; font-size: 13px
 
 <section class="section">
   <div class="container">
+    <h2 class="section-title">Featured Research</h2>
+    <div class="featured">
+      <span class="tag">ATRS World Conference 2026 · Beijing</span>
+      <h3>Beyond the QRH: Voice-Commanded AI for Emergency Decisions</h3>
+      <p>Multi-document Agentic Decision Support System (MADSS) validated with 300+ aviation professionals. Explore all research, projects, and publications in the Research Hub.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
     <h2 class="section-title">Explore My Work</h2>
     <div class="cta-grid">
       <a href="research.html" class="cta">
         <div class="cta-icon">🔬</div>
         <h3>Research Hub</h3>
-        <p>6 projects with search, filters, metrics, and publications.</p>
+        <p>6 projects with search, filters, detailed metrics, and publications.</p>
       </a>
       <a href="blog.html" class="cta">
         <div class="cta-icon">📝</div>
         <h3>Articles</h3>
-        <p>6 in-depth articles on MADSS, ML, and AI governance.</p>
+        <p>6 in-depth articles on MADSS, ML, AI governance, and research.</p>
       </a>
       <a href="resources.html" class="cta">
         <div class="cta-icon">🎬</div>
@@ -224,91 +242,114 @@ footer { text-align: center; padding: 40px 32px; color: #6b6791; font-size: 13px
 <button class="theme-toggle" id="themeToggle">🌙</button>
 
 <script>
-// DALLAS TIME - CENTERED, WITH DATE
-function updateTime() {
+// TIME - TOP CENTER, SMALL FONT
+function updateTimeTop() {
   var now = new Date();
   var options = {
     timeZone: 'America/Chicago',
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+    weekday: 'short',
+    month: 'short',
+    day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
     hour12: true
   };
   var timeStr = now.toLocaleDateString('en-US', options);
-  document.getElementById('timeDisplay').innerHTML = timeStr;
+  document.getElementById('timeTop').innerHTML = '● ' + timeStr;
 }
-updateTime();
-setInterval(updateTime, 1000);
+updateTimeTop();
+setInterval(updateTimeTop, 1000);
 
-// COUNTERS - INCREMENTS
-setTimeout(function() {
-  // 25+ Years
-  var curr1 = 0;
-  var int1 = setInterval(function() {
-    curr1++;
-    if (curr1 <= 25) {
-      document.getElementById('stat1').innerHTML = curr1 + '+';
-    }
-    if (curr1 >= 25) clearInterval(int1);
-  }, 40);
+// LOOPING COUNTERS
+function loopCounters() {
+  // Counter 1: 25+ Years
+  function loop1() {
+    var curr = 0;
+    var int = setInterval(function() {
+      curr++;
+      document.getElementById('stat1').innerHTML = curr + '+';
+      if (curr >= 25) {
+        clearInterval(int);
+        setTimeout(loop1, 2000);
+      }
+    }, 40);
+  }
+  loop1();
 
-  // 300+ Participants
-  var curr2 = 0;
-  var int2 = setInterval(function() {
-    curr2 += 6;
-    if (curr2 <= 300) {
-      document.getElementById('stat2').innerHTML = curr2 + '+';
-    }
-    if (curr2 >= 300) clearInterval(int2);
-  }, 25);
+  // Counter 2: 300+ Participants
+  function loop2() {
+    var curr = 0;
+    var int = setInterval(function() {
+      curr += 6;
+      document.getElementById('stat2').innerHTML = curr + '+';
+      if (curr >= 300) {
+        clearInterval(int);
+        setTimeout(loop2, 2000);
+      }
+    }, 25);
+  }
+  loop2();
 
-  // 35% Downtime
-  var curr3 = 0;
-  var int3 = setInterval(function() {
-    curr3++;
-    if (curr3 <= 35) {
-      document.getElementById('stat3').innerHTML = curr3 + '%';
-    }
-    if (curr3 >= 35) clearInterval(int3);
-  }, 30);
+  // Counter 3: 35% Downtime
+  function loop3() {
+    var curr = 0;
+    var int = setInterval(function() {
+      curr++;
+      document.getElementById('stat3').innerHTML = curr + '%';
+      if (curr >= 35) {
+        clearInterval(int);
+        setTimeout(loop3, 2000);
+      }
+    }, 30);
+  }
+  loop3();
 
-  // CAD 1.6M
-  var curr4 = 0;
-  var int4 = setInterval(function() {
-    curr4 += 0.05;
-    if (curr4 <= 1.6) {
-      document.getElementById('stat4').innerHTML = 'CAD ' + curr4.toFixed(2) + 'M';
-    }
-    if (curr4 >= 1.6) {
-      document.getElementById('stat4').innerHTML = 'CAD 1.6M';
-      clearInterval(int4);
-    }
-  }, 30);
+  // Counter 4: CAD 1.6M
+  function loop4() {
+    var curr = 0;
+    var int = setInterval(function() {
+      curr += 0.05;
+      document.getElementById('stat4').innerHTML = 'CAD ' + curr.toFixed(2) + 'M';
+      if (curr >= 1.6) {
+        document.getElementById('stat4').innerHTML = 'CAD 1.6M';
+        clearInterval(int);
+        setTimeout(loop4, 2000);
+      }
+    }, 30);
+  }
+  loop4();
 
-  // 100% Audit
-  var curr5 = 0;
-  var int5 = setInterval(function() {
-    curr5 += 2;
-    if (curr5 <= 100) {
-      document.getElementById('stat5').innerHTML = curr5 + '%';
-    }
-    if (curr5 >= 100) clearInterval(int5);
-  }, 30);
+  // Counter 5: 100% Audit
+  function loop5() {
+    var curr = 0;
+    var int = setInterval(function() {
+      curr += 2;
+      document.getElementById('stat5').innerHTML = curr + '%';
+      if (curr >= 100) {
+        clearInterval(int);
+        setTimeout(loop5, 2000);
+      }
+    }, 30);
+  }
+  loop5();
 
-  // 6 Papers
-  var curr6 = 0;
-  var int6 = setInterval(function() {
-    curr6++;
-    if (curr6 <= 6) {
-      document.getElementById('stat6').innerHTML = curr6;
-    }
-    if (curr6 >= 6) clearInterval(int6);
-  }, 150);
-}, 500);
+  // Counter 6: 6 Papers
+  function loop6() {
+    var curr = 0;
+    var int = setInterval(function() {
+      curr++;
+      document.getElementById('stat6').innerHTML = curr;
+      if (curr >= 6) {
+        clearInterval(int);
+        setTimeout(loop6, 2000);
+      }
+    }, 150);
+  }
+  loop6();
+}
+
+setTimeout(loopCounters, 500);
 
 // Typewriter
 var phrases = ['Senior FSTD Engineer', 'AI/ML Researcher', 'Aviation Expert', 'ATRS 2026 Speaker'];
