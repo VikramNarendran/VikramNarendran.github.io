@@ -4,355 +4,85 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resources & Speaking | Dr. Vikram Narendran</title>
-<meta name="description" content="Videos, presentations, and speaking engagements in AI governance and aviation safety.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --bg: #0a0a18;
-  --bg-2: #11102a;
-  --bg-3: #1a1640;
   --surface: rgba(255,255,255,0.04);
   --border: rgba(255,255,255,0.08);
   --text: #e9e6f5;
   --text-2: #a8a3c9;
-  --text-3: #6b6791;
   --accent: #a78bfa;
   --accent-2: #fbbf24;
 }
 [data-theme="light"] {
   --bg: #faf8ff;
-  --bg-2: #ffffff;
-  --bg-3: #f3efff;
-  --surface: rgba(0,0,0,0.02);
-  --border: rgba(0,0,0,0.08);
   --text: #1a1240;
   --text-2: #5a4d8c;
-  --text-3: #8a82b8;
   --accent: #7c3aed;
-  --accent-2: #d97706;
 }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-.nav {
-  position: sticky;
-  top: 0;
-  background: rgba(10,10,24,0.7);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  z-index: 100;
-  padding: 18px 0;
-}
-[data-theme="light"] .nav { background: rgba(255,255,255,0.7); }
-.nav-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.home-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  transition: all 0.3s;
-  margin-right: 16px;
-}
-.home-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateX(-4px);
-}
-.dallas-time {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--accent);
-  z-index: 99;
-  letter-spacing: 1px;
-}
-.nav-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.nav-name {
-  font-weight: 700;
-  font-size: 18px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration: none;
-  cursor: pointer;
-}
-.nav-links { display: flex; gap: 32px; }
-.nav-links a {
-  color: var(--text-2);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.3s;
-}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+.nav { position: sticky; top: 0; background: rgba(10,10,24,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 100; padding: 15px 32px; }
+.nav-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.home-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; }
+.home-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateX(-4px); }
+.nav-name { font-weight: 700; font-size: 16px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: var(--text-2); text-decoration: none; font-size: 14px; }
 .nav-links a:hover { color: var(--accent); }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-.header {
-  padding: 80px 32px 60px;
-  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-3) 100%);
-}
-.header h1 {
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--text), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.header p {
-  font-size: 18px;
-  color: var(--text-2);
-  max-width: 700px;
-}
-.section { padding: 60px 32px; }
-.section-title {
-  font-size: 36px;
-  font-weight: 800;
-  margin-bottom: 40px;
-  color: var(--text);
-}
-.section-label {
-  font-size: 12px;
-  color: var(--accent);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.videos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 24px;
-}
-.video-card {
-  background: var(--surface);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-.video-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-}
-.video-thumbnail {
-  width: 100%;
-  height: 220px;
-  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  border-bottom: 1px solid var(--border);
-}
-.video-content {
-  padding: 24px;
-}
-.video-tag {
-  display: inline-block;
-  font-size: 11px;
-  background: rgba(167,139,250,0.15);
-  color: var(--accent);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-.video-content h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.video-date {
-  font-size: 12px;
-  color: var(--text-3);
-  margin-bottom: 12px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.video-description {
-  font-size: 14px;
-  color: var(--text-2);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-.video-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: var(--accent);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-.video-link:hover {
-  transform: translateX(4px);
-  box-shadow: 0 8px 20px rgba(167,139,250,0.3);
-}
-.featured-video {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 40px;
-  margin-bottom: 40px;
-  text-align: center;
-}
-.featured-video h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.featured-video p {
-  font-size: 16px;
-  color: var(--text-2);
-  max-width: 600px;
-  margin: 0 auto 24px;
-  line-height: 1.7;
-}
-.video-embed {
-  max-width: 100%;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-.video-embed iframe {
-  width: 100%;
-  height: 500px;
-  border: none;
-}
-.speaking-timeline {
-  position: relative;
-  padding-left: 40px;
-}
-.speaking-timeline::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent), var(--accent-2), transparent);
-}
-.speaking-item {
-  position: relative;
-  margin-bottom: 32px;
-  padding: 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: all 0.3s;
-}
-.speaking-item:hover {
-  border-color: var(--accent);
-  transform: translateX(8px);
-}
-.speaking-item::before {
-  content: '';
-  position: absolute;
-  left: -34px;
-  top: 28px;
-  width: 14px;
-  height: 14px;
-  background: var(--accent);
-  border-radius: 50%;
-  border: 3px solid var(--bg);
-  box-shadow: 0 0 0 2px var(--accent);
-}
-.speaking-item h3 {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.speaking-meta {
-  font-size: 13px;
-  color: var(--accent);
-  font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 12px;
-}
-.speaking-item p {
-  font-size: 14px;
-  color: var(--text-2);
-  line-height: 1.7;
-}
-.theme-toggle {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: var(--accent);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 99;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(167,139,250,0.4);
-  transition: transform 0.3s;
-}
-.theme-toggle:hover { transform: scale(1.1) rotate(180deg); }
-footer {
-  text-align: center;
-  padding: 40px 32px;
-  color: var(--text-3);
-  font-size: 14px;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-}
-@media (max-width: 768px) {
-  .header h1 { font-size: 32px; }
-  .videos-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  .video-embed iframe { height: 300px; }
-}
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.header { padding: 60px 32px 40px; background: linear-gradient(135deg, var(--bg) 0%, #1a1640 100%); }
+.header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, var(--text), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header p { font-size: 16px; color: var(--text-2); max-width: 700px; }
+
+/* PROJECT LIST VIEW */
+.projects-list { padding: 60px 32px; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; cursor: pointer; transition: all 0.3s; }
+.project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+.project-tag { display: inline-block; background: rgba(167,139,250,0.15); color: var(--accent); font-size: 11px; padding: 6px 12px; border-radius: 6px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; border: 1px solid rgba(167,139,250,0.3); }
+.project-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+.project-card p { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px; }
+.project-meta { display: flex; gap: 16px; font-size: 12px; color: var(--text-2); font-family: 'JetBrains Mono', monospace; }
+.project-icon { font-size: 32px; margin-bottom: 12px; }
+
+/* PROJECT FULL VIEW */
+.project-view { display: none; padding: 60px 32px; }
+.project-view.active { display: block; }
+.back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; margin-bottom: 40px; cursor: pointer; }
+.back-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateX(-4px); }
+.project-header { margin-bottom: 48px; }
+.project-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+.project-meta-info { display: flex; gap: 16px; font-size: 13px; color: var(--text-2); font-family: 'JetBrains Mono', monospace; flex-wrap: wrap; margin-bottom: 24px; }
+.video-container { width: 100%; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 40px; }
+.video-container iframe { width: 100%; height: 600px; border: none; }
+.project-content { max-width: 900px; font-size: 16px; line-height: 1.9; color: var(--text-2); }
+.project-content h3 { font-size: 22px; font-weight: 700; margin: 32px 0 16px 0; color: var(--text); }
+.project-content h4 { font-size: 18px; font-weight: 700; margin: 24px 0 12px 0; color: var(--accent); }
+.project-content p { margin-bottom: 18px; }
+.project-content ul, .project-content ol { margin: 18px 0 18px 24px; }
+.project-content li { margin-bottom: 10px; }
+.project-content strong { font-weight: 700; color: var(--accent); }
+
+.highlight-box { background: rgba(167,139,250,0.08); border-left: 4px solid var(--accent-2); padding: 20px; border-radius: 8px; margin: 24px 0; }
+.highlight-box p { margin: 0; color: var(--text-2); font-size: 15px; }
+
+#searchInput { width: 100%; padding: 14px 16px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif; margin-bottom: 40px; transition: all 0.3s; }
+#searchInput:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(167,139,250,0.2); }
+#searchInput::placeholder { color: var(--text-2); opacity: 0.6; }
+
+#noResults { display: none; text-align: center; padding: 60px 20px; color: var(--text-2); }
+#noResults p { font-size: 16px; }
+
+.theme-toggle { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--accent); border: none; border-radius: 50%; cursor: pointer; z-index: 99; font-size: 20px; }
+.theme-toggle:hover { transform: scale(1.1); }
+
+footer { text-align: center; padding: 40px 32px; color: #6b6791; font-size: 13px; border-top: 1px solid var(--border); }
+
+@media (max-width: 768px) { .nav-links { display: none; } .header h1 { font-size: 2rem; } .project-header h2 { font-size: 1.5rem; } .video-container iframe { height: 300px; } }
 </style>
 </head>
 <body>
@@ -363,147 +93,535 @@ footer {
     <a href="index.html" class="nav-name">Dr. Vikram Narendran</a>
     <div class="nav-links">
       <a href="research.html">Research</a>
-      <a href="index.html#blog">Blog</a>
+      <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contact</a>
     </div>
   </div>
 </nav>
 
-<div class="dallas-time" id="dallasTime">CDT --:--:--</div>
-
 <header class="header">
   <div class="container">
     <h1>Resources & Speaking</h1>
-    <p>Videos, presentations, and speaking engagements in AI governance, aviation safety, and research.</p>
+    <p>Video presentations on AI governance, research frameworks, and aviation insights. Click any project to explore the full presentation.</p>
   </div>
 </header>
 
-<!-- Featured Video -->
-<section class="section">
+<!-- PROJECTS LIST VIEW -->
+<section class="projects-list" id="projectsList">
   <div class="container">
-    <div class="section-label">// Featured Talk</div>
-    <h2 class="section-title">AI Governance in Aviation</h2>
-    <div class="featured-video">
-      <h2>AI Summit Abu Dhabi 2025</h2>
-      <p>Featured presentation on AI governance frameworks and the MADSS decision support system for pilots during critical emergencies.</p>
-      <div class="video-embed">
-        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7355235269412892672/" frameborder="0" allowfullscreen title="AI Summit Abu Dhabi 2025 - AI Governance"></iframe>
-      </div>
-      <span style="font-size: 12px; color: var(--text-3); font-family: 'JetBrains Mono', monospace;">LIVE ● Posted by AI Summit Abu Dhabi on LinkedIn</span>
+    <div style="margin-bottom: 40px;">
+      <input type="text" id="searchInput" placeholder="Search projects by title, topic, or keyword...">
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+    <div id="noResults" style="display: none; text-align: center; padding: 40px 20px; color: var(--text-2);">
+      <p style="font-size: 16px;">No projects found matching your search.</p>
     </div>
   </div>
 </section>
 
-<!-- Upcoming Videos -->
-<section class="section" style="background: var(--bg-2);">
+<!-- PROJECT FULL VIEW -->
+<section class="project-view" id="projectView">
   <div class="container">
-    <div class="section-label">// Recorded Content</div>
-    <h2 class="section-title">Video Library</h2>
-    <div class="videos-grid">
-      <div class="video-card">
-        <div class="video-thumbnail">🔬</div>
-        <div class="video-content">
-          <span class="video-tag">Research</span>
-          <h3>MADSS: Voice-Commanded AI for Aviation Safety</h3>
-          <p class="video-date">Coming Soon</p>
-          <p class="video-description">Deep dive into the Multi-document Agentic Decision Support System and how it improves pilot decision-making during emergencies.</p>
-          <a href="#" class="video-link" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</a>
-        </div>
-      </div>
-      
-      <div class="video-card">
-        <div class="video-thumbnail">🤖</div>
-        <div class="video-content">
-          <span class="video-tag">Machine Learning</span>
-          <h3>Predictive Maintenance: From Data to Operations</h3>
-          <p class="video-date">Coming Soon</p>
-          <p class="video-description">How Random Forest models reduced simulator downtime by 35%. Case study from CAE Dallas operations.</p>
-          <a href="#" class="video-link" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</a>
-        </div>
-      </div>
-      
-      <div class="video-card">
-        <div class="video-thumbnail">🛡️</div>
-        <div class="video-content">
-          <span class="video-tag">AI Governance</span>
-          <h3>Governance Frameworks for Safety-Critical AI</h3>
-          <p class="video-date">Coming Soon</p>
-          <p class="video-description">Research presentation on TRN framework and empirical models for AI governance in aviation domains.</p>
-          <a href="#" class="video-link" style="opacity: 0.6; cursor: not-allowed;">Coming Soon</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Speaking Engagements -->
-<section class="section">
-  <div class="container">
-    <div class="section-label">// Speaking Engagements</div>
-    <h2 class="section-title">Conferences & Presentations</h2>
-    <div class="speaking-timeline">
-      <div class="speaking-item">
-        <h3>ATRS World Conference 2026</h3>
-        <div class="speaking-meta">Beijing · July 2026 · ACCEPTED</div>
-        <p><strong>Paper:</strong> "Beyond the QRH: A Voice-Commanded AI Decision Support System for Pilots During Critical Emergencies"</p>
-        <p style="margin-top: 12px;">Presenting research on MADSS with PLS-SEM validation across 300+ aviation professionals.</p>
-      </div>
-      
-      <div class="speaking-item">
-        <h3>AI Summit Abu Dhabi 2025</h3>
-        <div class="speaking-meta">Abu Dhabi · 2025 · FEATURED</div>
-        <p><strong>Presentation:</strong> "AI Governance in Aviation: From Research to Operations"</p>
-        <p style="margin-top: 12px;">Featured speaker discussing governance frameworks and real-world implementation of AI decision support systems.</p>
-      </div>
-      
-      <div class="speaking-item">
-        <h3>Looking for Speaking Opportunities</h3>
-        <div class="speaking-meta">Topics Available · Collaboration Welcome</div>
-        <p>I'm interested in speaking opportunities on:</p>
-        <ul style="margin-top: 12px; margin-left: 20px; color: var(--text-2);">
-          <li>AI in Safety-Critical Domains</li>
-          <li>Domain-Specific Language Models vs Generic LLMs</li>
-          <li>Predictive Maintenance & ML Operations</li>
-          <li>AI Governance & Regulatory Frameworks</li>
-          <li>Aviation Engineering & AI Innovation</li>
-        </ul>
-        <p style="margin-top: 12px;"><strong>Interested? <a href="mailto:vikram_narendran17@outlook.com" style="color: var(--accent); font-weight: 700;">Get in touch</a></strong></p>
-      </div>
-    </div>
+    <button class="back-btn" onclick="showList()">← Back to All Projects</button>
+    <div id="projectContent"></div>
   </div>
 </section>
 
 <footer>
   <p>&copy; 2026 Dr. Vikram Narendran | Resources & Speaking</p>
-  <p>ATRS 2026 Speaker | AI Summit Abu Dhabi 2025 | Conference Presenter</p>
+  <p>AI Governance Researcher | ATRS 2026 Speaker</p>
 </footer>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">&#9790;</button>
+<button class="theme-toggle" id="themeToggle">🌙</button>
 
 <script>
-// Dallas Time (Central Time)
-function updateDallasTime() {
-  var now = new Date();
-  var dallasTime = now.toLocaleString('en-US', { timeZone: 'America/Chicago', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  var isDST = new Date(now.getFullYear(), 5, 1) > now || now > new Date(now.getFullYear(), 10, 1) ? false : true;
-  var tz = isDST ? 'CDT' : 'CST';
-  var el = document.getElementById('dallasTime');
-  if (el) el.innerHTML = '<span style="color:#22c55e">●</span> ' + tz + ' ' + dallasTime;
-}
-updateDallasTime();
-setInterval(updateDallasTime, 1000);
+const projects = [
+  {
+    id: 1,
+    title: "Navigating the Quantum Skies: AI Governance Framework",
+    icon: "🌌",
+    tag: "AI Governance",
+    date: "2025",
+    readTime: "15 min",
+    preview: "The Roger-Narendran-Nielsen (R-N-N) Framework for safe, ethical, and trustworthy AI integration in aviation.",
+    content: `
+      <div class="project-header">
+        <div class="project-icon">🌌</div>
+        <span class="project-tag">AI GOVERNANCE</span>
+        <h2>Navigating the Quantum Skies: The Imperative of AI Governance in Aviation</h2>
+        <div class="project-meta-info">
+          <span>🎯 AI Summit Abu Dhabi 2025</span>
+          <span>📅 2025</span>
+          <span>⏱ 15 min presentation</span>
+        </div>
+      </div>
 
-document.getElementById('themeToggle').addEventListener('click', function() {
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  if (current === 'light') {
-    html.removeAttribute('data-theme');
-    this.innerHTML = '&#9790;';
-  } else {
-    html.setAttribute('data-theme', 'light');
-    this.innerHTML = '&#9728;';
+      <div class="video-container">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7355235269412892672/" frameborder="0" allowfullscreen title="AI Governance in Aviation"></iframe>
+      </div>
+
+      <div class="project-content">
+        <h3>Overview</h3>
+        <p>This presentation introduces the <strong>Roger-Narendran-Nielsen (R-N-N) Framework</strong>—a comprehensive, multi-dimensional approach to AI governance that ensures safe, ethical, and trustworthy AI integration in aviation, from classical to quantum computing systems.</p>
+
+        <h3>The Problem: Innovation vs Safety</h3>
+        <p>AI offers unprecedented advancements in aviation—optimized flight paths, predictive maintenance, enhanced air traffic management, and emergency decision support. However, rapid innovation can outpace regulatory and ethical frameworks, creating risks: unintended consequences, errors, biases, and lack of transparency.</p>
+
+        <div class="highlight-box">
+          <p><strong>The Goal:</strong> Ensure innovation doesn't compromise the ironclad safety of aviation.</p>
+        </div>
+
+        <h3>The R-N-N Framework: Three Pillars</h3>
+
+        <h4>Pillar 1: Rogers' Diffusion of Innovation</h4>
+        <p>Understand how AI innovations and governance spread through the aviation system. Key attributes for adoption:</p>
+        <ul>
+          <li><strong>Relative Advantage:</strong> Is the AI clearly better? (e.g., faster response times, better accuracy)</li>
+          <li><strong>Compatibility:</strong> Does it align with aviation's core safety values?</li>
+          <li><strong>Complexity:</strong> How easy is it to understand and use?</li>
+          <li><strong>Trialability:</strong> Can it be safely tested? (e.g., simulator testing)</li>
+          <li><strong>Observability:</strong> Are the benefits visible?</li>
+        </ul>
+
+        <h4>Pillar 2: Narendran Criticality Tiers</h4>
+        <p>Not all AI systems pose equal risks. The framework uses a two-tier approach:</p>
+        
+        <p><strong>TIER 1 - CRITICAL OPERATIONS:</strong> Failure leads to loss of life, severe injury, or catastrophic consequences.</p>
+        <ul>
+          <li>AI in autonomous flight systems</li>
+          <li>AI in air traffic control decision support</li>
+          <li>AI in predictive maintenance for critical components</li>
+          <li>AI-driven emergency decision support (e.g., MADSS)</li>
+        </ul>
+        <p><strong>Governance Demands:</strong> Extremely rigorous certification, explainable AI (XAI), robust human-in-the-loop, strict data governance, clear accountability.</p>
+
+        <p style="margin-top: 20px;"><strong>TIER 2 - NON-CRITICAL OPERATIONS:</strong> Failure leads to inconvenience or minor loss, no direct safety threat.</p>
+        <ul>
+          <li>Airline ticketing systems</li>
+          <li>Customer service chatbots</li>
+          <li>Baggage handling optimization</li>
+        </ul>
+        <p><strong>Governance Demands:</strong> Focus on usability, efficiency, agile development, clear redress mechanisms.</p>
+
+        <h4>Pillar 3: Nielsen's Human-Centric Design</h4>
+        <p>Jakob Nielsen's heuristics ensure human users maintain control and freedom. Critical principle: <strong>"User Control and Freedom"</strong>—always provide an emergency exit or fallback.</p>
+        <p><strong>Example (MADSS):</strong> When voice commands fail, pilots fall back to the physical Quick Reference Handbook (QRH)—the vital escape route.</p>
+        <p><strong>Supporting heuristic:</strong> "Visibility of System Status"—AI must clearly communicate its operational state and failures.</p>
+
+        <h3>Real-World Case Study: MADSS</h3>
+        <p>My RAG-based AI model for pilot emergency assistance demonstrated critical governance lessons:</p>
+        <ul>
+          <li><strong>Text-based retrieval:</strong> 8/10 accuracy—promising results</li>
+          <li><strong>Voice-based commands:</strong> NOT consistently reliable</li>
+          <li><strong>Implication:</strong> In a real cockpit under immense stress, unreliability is unacceptable</li>
+          <li><strong>Takeaway:</strong> Robust, context-aware governance is non-negotiable</li>
+        </ul>
+
+        <h3>Data Integrity & Ethical AI</h3>
+        
+        <h4>Data Governance</h4>
+        <ul>
+          <li><strong>Quality & Integrity:</strong> AI is only as good as its training data</li>
+          <li><strong>Privacy & Security:</strong> Protecting sensitive operational and passenger data</li>
+          <li><strong>Provenance:</strong> Tracking data origin and transformations</li>
+        </ul>
+
+        <h4>Ethical Considerations</h4>
+        <ul>
+          <li><strong>Bias Mitigation:</strong> Addressing unfair or discriminatory outcomes</li>
+          <li><strong>Human-in-the-Loop:</strong> AI as assistant, not replacement for human judgment</li>
+          <li><strong>Accountability:</strong> Clear frameworks for responsibility when AI errs</li>
+        </ul>
+
+        <h3>Quantum-AI: The Next Frontier</h3>
+        <p>Quantum-AI combines quantum computing with AI—exponentially faster optimization, advanced materials design, complex simulations. However, it intensifies governance challenges:</p>
+        <ul>
+          <li><strong>Extreme Explainability:</strong> The "quantum black box" problem</li>
+          <li><strong>Verification & Validation:</strong> How to test inherently probabilistic systems?</li>
+          <li><strong>Cybersecurity:</strong> Quantum computers threaten current encryption</li>
+          <li><strong>Resource Concentration:</strong> Development concentrated in few powerful entities</li>
+        </ul>
+
+        <h3>Key Takeaways</h3>
+        <div class="highlight-box">
+          <p>✈️ <strong>AI's promise in aviation is immense, but safety is non-negotiable.</strong></p>
+        </div>
+        <div class="highlight-box">
+          <p>⚙️ <strong>One-size-fits-all governance is inefficient. Align rigor with consequences of failure.</strong></p>
+        </div>
+        <div class="highlight-box">
+          <p>🔐 <strong>Users must always have control and freedom—"escape routes" matter.</strong></p>
+        </div>
+        <div class="highlight-box">
+          <p>🤝 <strong>Ethical AI and robust governance are a shared responsibility of everyone in aviation.</strong></p>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 2,
+    title: "Beyond the QRH: MADSS - Voice-Commanded AI for Emergency Decisions",
+    icon: "🎙️",
+    tag: "AI Decision Support",
+    date: "2026",
+    readTime: "12 min",
+    preview: "Multi-document Agentic Decision Support System (MADSS) validated with 300+ aviation professionals for pilot emergency assistance.",
+    content: `
+      <div class="project-header">
+        <div class="project-icon">🎙️</div>
+        <span class="project-tag">AI DECISION SUPPORT</span>
+        <h2>Beyond the QRH: Voice-Commanded AI Decision Support System for Pilots</h2>
+        <div class="project-meta-info">
+          <span>🎯 ATRS World Conference 2026</span>
+          <span>📅 2026</span>
+          <span>⏱ 12 min presentation</span>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <iframe src="[ADD_LINKEDIN_VIDEO_URL_HERE]" frameborder="0" allowfullscreen title="MADSS: Voice-Commanded AI"></iframe>
+      </div>
+
+      <div class="project-content">
+        <h3>Overview</h3>
+        <p>MADSS (Multi-document Agentic Decision Support System) is an agentic AI system designed to assist pilots during critical emergencies by synthesizing information from multiple aviation documents—Quick Reference Handbooks (QRH), Flight Crew Operating Manuals (FCOM), Minimum Equipment Lists (MEL), and Service Bulletins—in real-time through voice commands.</p>
+
+        <h3>The Problem: Sequential Decision-Making Under Stress</h3>
+        <p>For 25 years, I've observed that pilots relying on QRH during emergencies face a critical limitation: they follow procedures sequentially, often missing connections between related procedures or failing to recognize warnings embedded in other documents.</p>
+        
+        <p>In a cockpit emergency with extreme cognitive load, a pilot executing an engine fire procedure might miss fuel system interactions or MEL constraints—not due to pilot failure, but due to human limitations amplified by stress.</p>
+
+        <h3>The Solution: Agentic AI with Multi-Document Retrieval</h3>
+        <p>MADSS addresses this through three pillars:</p>
+        <ul>
+          <li><strong>Multi-Document RAG:</strong> Indexes every relevant aviation document</li>
+          <li><strong>Agentic Reasoning:</strong> Identifies relationships, highlights conflicts, flags critical warnings</li>
+          <li><strong>Domain-Specific Fine-Tuning:</strong> Built on Small Language Models trained specifically on aviation procedures</li>
+        </ul>
+
+        <h3>Why Domain-Specific Over Generic LLMs?</h3>
+        <p>Generic LLMs like GPT-4 lack critical domain knowledge. They can generate plausible-sounding but incorrect guidance—catastrophic in aviation. MADSS is trained on actual aviation documents and expert-validated by 300+ aviation professionals.</p>
+
+        <h3>Validation Results: 300+ Aviation Professionals</h3>
+        <ul>
+          <li><strong>23% fewer procedure errors</strong> with MADSS guidance</li>
+          <li><strong>34% more critical procedural steps</strong> identified</li>
+          <li><strong>18% lower cognitive load</strong> reported by pilots</li>
+          <li><strong>Higher decision confidence</strong> despite more information</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p><strong>Validated through PLS-SEM analysis with 300+ participants across multiple airlines and aircraft types.</strong></p>
+        </div>
+
+        <h3>Key Insights</h3>
+        <ul>
+          <li>Domain-specific AI outperforms generic LLMs in safety-critical domains</li>
+          <li>Voice-based interfaces require robust, context-aware design</li>
+          <li>Human-in-the-loop is essential—AI assists, humans decide</li>
+          <li>Regulatory approval requires documented training data and validation</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: 3,
+    title: "From CAD 1.6M Savings: SVM in Aviation Inventory Optimization",
+    icon: "📊",
+    tag: "Machine Learning",
+    date: "2024",
+    readTime: "14 min",
+    preview: "How Support Vector Machines optimized 3,000+ SKUs and saved CAD 1.6M in inventory costs while maintaining 99.8% availability.",
+    content: `
+      <div class="project-header">
+        <div class="project-icon">📊</div>
+        <span class="project-tag">MACHINE LEARNING</span>
+        <h2>From CAD 1.6M Savings: Support Vector Machines in Aviation Inventory</h2>
+        <div class="project-meta-info">
+          <span>📚 Published Research - May 2024</span>
+          <span>📅 2024</span>
+          <span>⏱ 14 min presentation</span>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <iframe src="[ADD_LINKEDIN_VIDEO_URL_HERE]" frameborder="0" allowfullscreen title="SVM in Aviation Inventory"></iframe>
+      </div>
+
+      <div class="project-content">
+        <h3>Overview</h3>
+        <p>Full Flight Simulators require thousands of parts. At any moment, we maintain 3,000+ SKUs across 20+ simulators. Some are critical spares; others are consumables; many are never used. This project applied Support Vector Machines (SVM) to classify parts and optimize inventory, resulting in CAD 1.6M in savings while maintaining 99.8% part availability.</p>
+
+        <h3>The Challenge</h3>
+        <p>Inventory was classified simply: "critical" or "non-critical." This binary approach led to overstocking. We needed nuanced classification considering:</p>
+        <ul>
+          <li>Usage frequency</li>
+          <li>Lead time</li>
+          <li>Cost</li>
+          <li>Criticality for operations</li>
+          <li>Shelf life and obsolescence risk</li>
+          <li>Supplier reliability</li>
+        </ul>
+
+        <h3>SVM Approach</h3>
+        <p>Support Vector Machines excel at finding optimal decision boundaries in high-dimensional space. We trained an SVM on 10 years of historical data to classify parts into four tiers.</p>
+
+        <h3>Classification Results</h3>
+        <ul>
+          <li><strong>Tier 1 (20% value, 5% SKUs):</strong> Critical spares. Stock aggressively.</li>
+          <li><strong>Tier 2 (30% value, 15% SKUs):</strong> Important consumables. Stock 60% of historical max.</li>
+          <li><strong>Tier 3 (35% value, 40% SKUs):</strong> Non-critical items. Stock on-demand.</li>
+          <li><strong>Tier 4 (15% value, 40% SKUs):</strong> Slow-moving/obsolete. Phase out.</li>
+        </ul>
+
+        <h3>Business Results</h3>
+        <div class="highlight-box">
+          <p>💰 <strong>CAD 1.6M inventory value reduction (43%)</strong></p>
+        </div>
+        <ul>
+          <li>Part availability maintained at 99.8%</li>
+          <li>Obsolescence reduced by 55%</li>
+          <li>Cash freed up for strategic operations</li>
+          <li>100% audit pass rate on inventory controls</li>
+        </ul>
+
+        <h3>Key Learnings</h3>
+        <ul>
+          <li><strong>Feature Engineering Matters:</strong> Real-world complexity requires comprehensive features</li>
+          <li><strong>Organizational Adoption:</strong> Technical work took 2 weeks; gaining trust took 3 months</li>
+          <li><strong>Business Trade-offs:</strong> Optimized for 99.8% availability at minimum cost</li>
+          <li><strong>Sustainability:</strong> Model requires periodic retraining as part usage patterns evolve</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p><strong>Published in American Journal of Industrial and Business Management (May 2024)</strong><br>DOI: 10.4236/ajibm.2024.145040</p>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: 4,
+    title: "Predictive Maintenance: Random Forest Reduced Simulator Downtime by 35%",
+    icon: "🔧",
+    tag: "Predictive Analytics",
+    date: "2025",
+    readTime: "13 min",
+    preview: "How Random Forest models predicted component failures 30 days in advance, reducing unplanned downtime by 35% and saving CAD 250K+ annually.",
+    content: `
+      <div class="project-header">
+        <div class="project-icon">🔧</div>
+        <span class="project-tag">PREDICTIVE ANALYTICS</span>
+        <h2>Predictive Maintenance: Random Forest Cut Downtime by 35%</h2>
+        <div class="project-meta-info">
+          <span>💡 Case Study</span>
+          <span>📅 2025</span>
+          <span>⏱ 13 min presentation</span>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <iframe src="[ADD_LINKEDIN_VIDEO_URL_HERE]" frameborder="0" allowfullscreen title="Predictive Maintenance Random Forest"></iframe>
+      </div>
+
+      <div class="project-content">
+        <h3>Overview</h3>
+        <p>Full Flight Simulators are expensive assets—each costs millions. Every offline hour means lost training slots, delayed courses, and deferred revenue. Using 10+ years of maintenance data, we built a Random Forest model to predict failures 30 days in advance, enabling proactive maintenance scheduling.</p>
+
+        <h3>The Problem: Reactive Maintenance</h3>
+        <p>We were managing downtime reactively—waiting for equipment to fail, then responding to emergency calls. This led to:</p>
+        <ul>
+          <li>Unplanned downtime disrupting schedules</li>
+          <li>Emergency service calls at premium rates</li>
+          <li>Cascading delays and customer dissatisfaction</li>
+        </ul>
+
+        <h3>The Solution: Random Forest Predictive Model</h3>
+        <p>We chose Random Forest because it:</p>
+        <ul>
+          <li><strong>Handles mixed data:</strong> Continuous, categorical, and temporal patterns</li>
+          <li><strong>Provides feature importance:</strong> Tells us which factors drive predictions</li>
+          <li><strong>Robust to outliers:</strong> Maintenance data is messy; RF handles anomalies</li>
+        </ul>
+
+        <h3>Results: 72% Prediction Accuracy (30-Day Horizon)</h3>
+        <div class="highlight-box">
+          <p>✈️ <strong>35% reduction in unplanned downtime</strong><br>
+          💰 <strong>CAD 250,000+ saved annually</strong><br>
+          📞 <strong>45% reduction in emergency service calls</strong></p>
+        </div>
+
+        <h3>Key Success Factors</h3>
+        <ul>
+          <li><strong>Domain Expertise:</strong> Best features came from maintenance engineers with decades of experience</li>
+          <li><strong>Model Interpretability:</strong> Teams don't trust black boxes—feature importance was crucial for adoption</li>
+          <li><strong>Organizational Change:</strong> Hardest part was getting teams to trust algorithmic recommendations; took 3 months of workshops</li>
+        </ul>
+
+        <h3>Critical Insight</h3>
+        <div class="highlight-box">
+          <p><strong>The real value of ML isn't intelligence—it's action. A brilliant model that's ignored is worthless.</strong></p>
+        </div>
+
+        <h3>Learnings</h3>
+        <ul>
+          <li>Predictive models require continuous retraining as systems age</li>
+          <li>Maintenance teams shifted from reactive to strategic planning</li>
+          <li>Proactive approach improves safety and reliability</li>
+          <li>Change management is as important as algorithm selection</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: 5,
+    title: "25 Years in FSTD: Engineering Leadership & AI Innovation",
+    icon: "✈️",
+    tag: "Leadership & Insights",
+    date: "2025",
+    readTime: "16 min",
+    preview: "Lessons in leadership, compliance, high-performance teams, and integrating AI innovation across 25 years in full-flight simulator engineering.",
+    content: `
+      <div class="project-header">
+        <div class="project-icon">✈️</div>
+        <span class="project-tag">LEADERSHIP & INSIGHTS</span>
+        <h2>25 Years in FSTD: Engineering Leadership & AI Integration</h2>
+        <div class="project-meta-info">
+          <span>🎓 Professional Journey</span>
+          <span>📅 2025</span>
+          <span>⏱ 16 min presentation</span>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <iframe src="[ADD_LINKEDIN_VIDEO_URL_HERE]" frameborder="0" allowfullscreen title="25 Years in FSTD Leadership"></iframe>
+      </div>
+
+      <div class="project-content">
+        <h3>Overview</h3>
+        <p>A quarter-century in Full Flight Simulator operations across Jet Airways Mumbai, Emirates-CAE Dubai, and CAE Dallas. This presentation shares lessons in leadership, regulatory compliance, building high-performance teams, and successfully integrating AI innovation into established, safety-critical operations.</p>
+
+        <h3>Lesson 1: Regulatory Compliance as Alignment, Not Burden</h3>
+        <p>Early in my career, I viewed regulators as obstacles. I learned to flip the narrative: regulators are stakeholders in the same mission—safe aviation.</p>
+        <p><strong>Approach:</strong> Instead of fighting regulations, I'd gather teams and ask: "What is the regulator trying to prevent? How do we not just comply, but exceed this standard?"</p>
+        <p><strong>Result:</strong> 100% audit pass rate across all global authorities during 18 years at Emirates-CAE.</p>
+
+        <h3>Lesson 2: Technical Depth Builds Team Respect</h3>
+        <p>I chose to stay technically sharp—learning Linux, debugging C code, running QTG tests. Why? Technical credibility is the foundation of leadership.</p>
+        <p><strong>Principle:</strong> Your team will never fully trust directives from someone they suspect doesn't understand the work.</p>
+
+        <h3>Lesson 3: Solving Old Problems Wins Hearts</h3>
+        <p>A Hawker 800 had a software discrepancy that existed for 10 years. I made it a personal mission. Found a surgical fix requiring 47 lines of code.</p>
+        <p><strong>Outcome:</strong> This earned something more valuable than money—trust and loyalty from the team.</p>
+
+        <h3>Lesson 4: Knowledge Transfer is Non-Negotiable</h3>
+        <p>When I arrived at CAE Dallas, wisdom was locked in individual engineers' heads. I established mandatory documentation and weekly deep dives.</p>
+        <p><strong>Impact:</strong> New team members ramp faster. The organization is more resilient.</p>
+
+        <h3>Lesson 5: Culture Beats Process</h3>
+        <p>Highly detailed processes can fail; informal cultures with shared values succeed.</p>
+        <p><strong>Three Core Values:</strong></p>
+        <ul>
+          <li><strong>Safety First:</strong> No schedule override, no cost savings, no pressure overrides safety</li>
+          <li><strong>Transparency:</strong> Problems surface immediately. Mistakes are learning opportunities</li>
+          <li><strong>Excellence:</strong> We don't do "good enough"</li>
+        </ul>
+
+        <h3>Lesson 6: AI Enhances Humans, Not Replaces Them</h3>
+        <p>Teams worry: "Will AI eliminate jobs?" The answer: AI changes jobs, not eliminates them.</p>
+        <p><strong>Example:</strong> Predictive maintenance shifts teams from reactive troubleshooting to strategic planning—higher-value work.</p>
+
+        <h3>Lesson 7: Listen More, Decide Less</h3>
+        <p>Early in my career, I confused leadership with decisiveness. The best decisions come from understanding diverse perspectives. When a junior technician raises a concern, they've usually seen something I missed.</p>
+
+        <h3>Lesson 8: Purpose Outlasts Profit</h3>
+        <p>I've never done this work for a paycheck. I've done it because the stakes are real. Every simulator I maintain contributes to safety. Every procedure I optimize might save lives.</p>
+
+        <div class="highlight-box">
+          <p><strong>For those early in engineering careers: Technical skills get you in the door. Culture, leadership, and purpose sustain decades-long excellence.</strong></p>
+        </div>
+      </div>
+    `
   }
-});
+];
+
+function renderProjectList(filtered = projects) {
+  const grid = document.getElementById('projectsGrid');
+  const noResults = document.getElementById('noResults');
+  
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    noResults.style.display = 'block';
+    return;
+  }
+  
+  noResults.style.display = 'none';
+  grid.innerHTML = filtered.map(project => `
+    <div class="project-card" onclick="showProject(${project.id})">
+      <div class="project-icon">${project.icon}</div>
+      <span class="project-tag">${project.tag}</span>
+      <h3>${project.title}</h3>
+      <p>${project.preview}</p>
+      <div class="project-meta">
+        <span>📅 ${project.date}</span>
+        <span>⏱ ${project.readTime}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterProjects(query) {
+  if (!query.trim()) {
+    renderProjectList(projects);
+    return;
+  }
+  
+  const lowerQuery = query.toLowerCase();
+  const filtered = projects.filter(project => 
+    project.title.toLowerCase().includes(lowerQuery) ||
+    project.tag.toLowerCase().includes(lowerQuery) ||
+    project.preview.toLowerCase().includes(lowerQuery)
+  );
+  
+  renderProjectList(filtered);
+}
+
+function showProject(id) {
+  const project = projects.find(p => p.id === id);
+  if (!project) return;
+  
+  document.getElementById('projectsList').style.display = 'none';
+  document.getElementById('projectView').classList.add('active');
+  document.getElementById('projectContent').innerHTML = project.content;
+  window.scrollTo(0, 0);
+}
+
+function showList() {
+  document.getElementById('projectsList').style.display = 'block';
+  document.getElementById('projectView').classList.remove('active');
+  window.scrollTo(0, 0);
+}
+
+function setupTheme() {
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function() {
+    if (document.documentElement.getAttribute('data-theme') === 'light') {
+      document.documentElement.removeAttribute('data-theme');
+      this.innerHTML = '🌙';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      this.innerHTML = '☀️';
+    }
+  });
+  
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', function(e) {
+    filterProjects(e.target.value);
+  });
+}
+
+renderProjectList();
+setupTheme();
 </script>
+
 </body>
 </html>
