@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research & Projects | Dr. Vikram Narendran</title>
+<meta name="description" content="Interactive research and projects hub. MADSS, predictive maintenance, AI governance, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a18;
+  --bg-2: #11102a;
+  --bg-3: #1a1640;
+  --surface: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+  --text: #e9e6f5;
+  --text-2: #a8a3c9;
+  --text-3: #6b6791;
+  --accent: #a78bfa;
+  --accent-2: #fbbf24;
+}
+[data-theme="light"] {
+  --bg: #faf8ff;
+  --bg-2: #ffffff;
+  --bg-3: #f3efff;
+  --surface: rgba(0,0,0,0.02);
+  --border: rgba(0,0,0,0.08);
+  --text: #1a1240;
+  --text-2: #5a4d8c;
+  --text-3: #8a82b8;
+  --accent: #7c3aed;
+  --accent-2: #d97706;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.5s, color 0.5s;
+}
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,24,0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 18px 0;
+}
+[data-theme="light"] .nav { background: rgba(255,255,255,0.7); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-name {
+  font-weight: 700;
+  font-size: 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.header {
+  padding: 80px 32px 60px;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-3) 100%);
+}
+.header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header p {
+  font-size: 18px;
+  color: var(--text-2);
+  max-width: 700px;
+}
+.controls {
+  padding: 40px 32px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+}
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  padding: 12px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s;
+}
+.search-box:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(167,139,250,0.2);
+}
+.filter-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: capitalize;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.projects-container { padding: 60px 32px; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.project-card {
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.project-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.project-status {
+  display: inline-block;
+  font-size: 11px;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.project-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.project-category {
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 14px;
+}
+.project-description {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.project-impact {
+  background: rgba(167,139,250,0.08);
+  border-left: 3px solid var(--accent-2);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal.active { display: block; }
+.modal-content {
+  background: var(--bg-2);
+  margin: 40px auto;
+  padding: 48px;
+  border-radius: 16px;
+  max-width: 900px;
+  border: 1px solid var(--border);
+  animation: slideUp 0.4s ease-out;
+  position: relative;
+}
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+.modal-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 40px; height: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.modal-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.modal-header {
+  margin-bottom: 28px;
+}
+.modal-header h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.modal-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 20px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.modal-section {
+  margin-bottom: 32px;
+}
+.modal-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+.tech-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tech-tag {
+  font-size: 12px;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.metric {
+  background: var(--surface);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.metric-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent-2);
+  margin-bottom: 6px;
+}
+.metric-label {
+  font-size: 12px;
+  color: var(--text-2);
+}
+.papers-list {
+  list-style: none;
+}
+.paper-item {
+  background: var(--surface);
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border-left: 3px solid var(--accent);
+}
+.paper-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.paper-meta {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+.paper-link {
+  display: inline-block;
+  color: var(--accent-2);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+}
+.no-results {
+  text-align: center;
+  padding: 60px 32px;
+  color: var(--text-2);
+}
+.no-results h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.theme-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 99;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(167,139,250,0.4);
+  transition: transform 0.3s;
+}
+.theme-toggle:hover { transform: scale(1.1) rotate(180deg); }
+footer {
+  text-align: center;
+  padding: 40px 32px;
+  color: var(--text-3);
+  font-size: 14px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+  .header h1 { font-size: 32px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .controls { flex-direction: column; }
+  .search-box { width: 100%; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Dr. Vikram Narendran</a>
+    <div class="nav-links">
+      <a href="index.html#research">Research</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="header">
+  <div class="container">
+    <h1>Research & Projects Hub</h1>
+    <p>Explore MADSS, predictive maintenance, AI governance, and more. Every project, searchable and discoverable.</p>
+  </div>
+</header>
+
+<section class="controls">
+  <div class="container" style="width: 100%; display: flex; gap: 20px; flex-wrap: wrap;">
+    <input 
+      type="text" 
+      id="searchInput" 
+      class="search-box" 
+      placeholder="Search projects by title, technology, or impact..." 
+      style="flex: 1; min-width: 250px;"
+    >
+    <div class="filter-group" id="filterGroup"></div>
+  </div>
+</section>
+
+<section class="projects-container">
+  <div class="container">
+    <div class="projects-grid" id="projectsGrid"></div>
+    <div class="no-results" id="noResults" style="display: none;">
+      <h2>No projects found</h2>
+      <p>Try adjusting your search or filters</p>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="projectModal">
+  <div class="modal-content">
+    <div class="modal-close" onclick="closeModal()">&times;</div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Dr. Vikram Narendran | Research Hub</p>
+  <p>All projects, publications, and research compiled here</p>
+</footer>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">&#9790;</button>
+
+<script>
+let allProjects = [];
+let filteredProjects = [];
+
+// Load projects data
+fetch('projects-data.json')
+  .then(response => response.json())
+  .then(data => {
+    allProjects = data;
+    initializeHub();
+  })
+  .catch(error => console.error('Error loading projects:', error));
+
+function initializeHub() {
+  renderProjects(allProjects);
+  createFilters();
+}
+
+function createFilters() {
+  const categories = [...new Set(allProjects.map(p => p.category))];
+  const filterGroup = document.getElementById('filterGroup');
+  
+  const allBtn = document.createElement('button');
+  allBtn.className = 'filter-btn active';
+  allBtn.textContent = 'All';
+  allBtn.onclick = () => filterByCategory(null);
+  filterGroup.appendChild(allBtn);
+  
+  categories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.textContent = cat;
+    btn.onclick = () => filterByCategory(cat);
+    filterGroup.appendChild(btn);
+  });
+}
+
+function filterByCategory(category) {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  if (category === null) {
+    filteredProjects = allProjects;
+  } else {
+    filteredProjects = allProjects.filter(p => p.category === category);
+  }
+  
+  filterBySearch();
+}
+
+function filterBySearch() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const results = filteredProjects.filter(p => 
+    p.title.toLowerCase().includes(query) ||
+    p.shortTitle.toLowerCase().includes(query) ||
+    p.description.toLowerCase().includes(query) ||
+    p.technologies.some(t => t.toLowerCase().includes(query))
+  );
+  
+  renderProjects(results);
+  document.getElementById('noResults').style.display = results.length === 0 ? 'block' : 'none';
+}
+
+function renderProjects(projects) {
+  const grid = document.getElementById('projectsGrid');
+  grid.innerHTML = '';
+  
+  projects.forEach(project => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.onclick = () => openModal(project);
+    
+    card.innerHTML = `
+      <div class="project-icon">${project.icon}</div>
+      <div class="project-status">${project.status}</div>
+      <h3>${project.title}</h3>
+      <div class="project-category">${project.category}</div>
+      <p class="project-description">${project.description}</p>
+      <div class="project-impact">${project.impact}</div>
+    `;
+    
+    grid.appendChild(card);
+  });
+}
+
+function openModal(project) {
+  const modalBody = document.getElementById('modalBody');
+  
+  let papersHTML = '';
+  if (project.papers && project.papers.length > 0) {
+    papersHTML = '<div class="modal-section"><h3>📚 Publications</h3><ul class="papers-list">';
+    project.papers.forEach(paper => {
+      papersHTML += `<li class="paper-item">
+        <div class="paper-title">${paper.title}</div>
+        <div class="paper-meta">${paper.conference || paper.journal} ${paper.year || ''}</div>
+        ${paper.doi ? `<a href="${paper.link}" target="_blank" class="paper-link">View Paper ↗</a>` : ''}
+      </li>`;
+    });
+    papersHTML += '</ul></div>';
+  }
+  
+  let metricsHTML = '';
+  if (project.metrics && project.metrics.length > 0) {
+    metricsHTML = '<div class="modal-section"><h3>📊 Key Metrics</h3><div class="metrics-grid">';
+    project.metrics.forEach(metric => {
+      metricsHTML += `<div class="metric">
+        <div class="metric-value">${metric.value}</div>
+        <div class="metric-label">${metric.label}</div>
+      </div>`;
+    });
+    metricsHTML += '</div></div>';
+  }
+  
+  let skillsHTML = '';
+  if (project.skills && project.skills.length > 0) {
+    skillsHTML = '<div class="modal-section"><h3>🛠️ Skills & Technologies</h3><div class="tech-tags">';
+    project.skills.forEach(skill => {
+      skillsHTML += `<div class="tech-tag">${skill}</div>`;
+    });
+    skillsHTML += '</div></div>';
+  }
+  
+  modalBody.innerHTML = `
+    <div class="modal-header">
+      <h2>${project.title}</h2>
+      <div class="modal-meta">
+        <span>📁 ${project.category}</span>
+        <span>🔬 ${project.researchType}</span>
+        <span>📅 ${project.timeline}</span>
+      </div>
+    </div>
+    
+    <div class="modal-section">
+      <h3>Overview</h3>
+      <p style="font-size: 15px; line-height: 1.8; color: var(--text-2);">${project.longDescription}</p>
+    </div>
+    
+    ${metricsHTML}
+    ${skillsHTML}
+    ${papersHTML}
+  `;
+  
+  document.getElementById('projectModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('projectModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+document.getElementById('searchInput').addEventListener('input', filterBySearch);
+
+document.getElementById('projectModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Theme toggle
+document.getElementById('themeToggle').addEventListener('click', function() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  if (current === 'light') {
+    html.removeAttribute('data-theme');
+    this.innerHTML = '&#9790;';
+  } else {
+    html.setAttribute('data-theme', 'light');
+    this.innerHTML = '&#9728;';
+  }
+});
+</script>
+</body>
+</html>
